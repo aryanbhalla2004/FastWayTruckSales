@@ -144,7 +144,7 @@ const TrailerDetail = (props) => {
             <div className='single-box-header'>
               <h2><i className="bi bi-justify"></i> Description</h2>
             </div>
-            <p>{product && product.description.blocks[0].text ? product.description.blocks[0].text : "No Description Found"}</p>
+            <p>{product && product.description ? product.description : "No Description Found"}</p>
           </div>
           <div className='single-box'>
             <div className='single-box-header'>

@@ -186,7 +186,7 @@ const SaleView = () => {
                       <li className='light-pd'>
                         <div class="container-space">
                           <div class="sigature-box">
-                            <h4 className='pdf-edit-title-small'>signature of Manager</h4>
+                            <h4 className='pdf-edit-title-small'>signature of Vendor</h4>
                           </div>
                           <div class="sigature-box">
                             <h4 class="col-half pdf-edit-title-small">Date</h4>

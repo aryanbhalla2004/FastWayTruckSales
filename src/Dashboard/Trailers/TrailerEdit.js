@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Select from 'react-select';
 import options from "../../Util/options.js"
-
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import imageCompression from 'browser-image-compression';
+import Axios from "axios";
+
 
 const TrailerEdit = (props) => {
+  const [loading, setloading] = useState({
+    one: false,
+    two: false,
+    three: false,
+    four: false,
+  })
   const history = useNavigate();
   const {id} = useParams();
   const [error, setError] = useState("");
@@ -27,12 +35,63 @@ const TrailerEdit = (props) => {
     var item = userInput;
 
     try{
-      let userDetails = await props.props.edit(item, "Trailers", id);
+      let userDetails = await props.edit(item, "Trailers", id);
       history('/dashboard/trailers');
     }
     catch(e){
       setError(e.message);
     }
+  }
+
+  const handleImageUpload = async (event, location) => {
+    setloading(prevInput => ({
+      ...prevInput, [location]: true
+    }));
+    const reader = new FileReader();
+    const imageFile = event.target.files[0];
+    console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+  
+    const options = {
+      maxSizeMB: 1,
+      useWebWorker: false,
+      onProgress: progressUploadingImage,       
+      maxIteration: 18,
+    }
+
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+      await uploadToServer(compressedFile, location);
+    } catch (error) {
+      console.log(error);
+    }
+  
+  }
+
+  const uploadToServer = async (compressedFile, location) => {
+    const formData = new FormData();
+    formData.append('file', compressedFile);
+    formData.append('upload_preset', 'pvwvpf90');
+    Axios.post("https://api.cloudinary.com/v1_1/dgjfoz5o1/image/upload", formData
+    ).then(async (response) => await showUploadedImage(response, location));
+  }
+
+  const showUploadedImage = (response, location) => {
+    console.log(response);
+    setuserInput(prevInput => ({
+      ...prevInput, images: {...userInput.images, [location]: response.data.secure_url}
+    }));
+
+    setloading(prevInput => ({
+      ...prevInput, [location]: false
+    }));
+  }
+
+  const progressUploadingImage = (progress) => {
+    console.log(progress);
+
   }
 
   return (
@@ -234,14 +293,35 @@ const TrailerEdit = (props) => {
   </div>
   
   </form>
-      <section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
-      <div className='dropzone'>
-        <div className="dz-message">
-        <h4 className="my-4">Drop files here or click to upload.</h4>  
-        <input type="file"/>                      
-        </div>
-      </div>
-      </section>
+  <section className=" shadow-sm p-4 mt-5 grid-fix-pic" id="basic-info">
+
+<div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.one})`}}> 
+  <div>   
+    {!loading.one ? <input type="file" onChange={(e) => handleImageUpload(e, "one")}/> : <div class="spinner-border text-light" role="status"></div>}
+  </div>                   
+</div>
+
+
+<div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.two})`}}>     
+  <div>   
+  {!loading.two ? <input type="file" onChange={(e) => handleImageUpload(e, "two")}/> : <div class="spinner-border text-light" role="status"></div>}
+  </div>                             
+</div>
+
+
+<div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.three})`}}>     
+  <div>  
+  {!loading.three ? <input type="file" onChange={(e) => handleImageUpload(e, "three")}/> : <div class="spinner-border text-light" role="status"></div>}        
+  </div>                 
+</div>
+
+
+<div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.four})`}}>     
+  <div>  
+  {!loading.four ? <input type="file" onChange={(e) => handleImageUpload(e, "four")}/>   : <div class="spinner-border text-light" role="status"></div>}    
+  </div>                        
+</div>
+</section>
     
   <section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
         <div className="row">

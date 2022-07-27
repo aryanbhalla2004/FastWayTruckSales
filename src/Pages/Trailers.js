@@ -380,13 +380,13 @@ export const Trailers = () => {
             <ul className='listing-of-items flex fl-center fl-space-between'>
             {!loading && (trailers.length > 0 ? trailers.map((item, index) => (
                 <li className='single-item flex fl-col' key={index}>
-                <div className="item-image" style={{backgroundImage: `url("https://www.pensketruckrental.com/media-library/image.jpg?id=25624376&width=1245&quality=85&coordinates=0%2C0%2C0%2C1&height=700")`}}>
+                <div className="item-image" style={{backgroundImage: `url(${item.images.one})`}}>
                   <span className='new-item'>For Sale</span>
                 </div>
                 <div className='single-item-info flex fl-col'>
                   <span className='stock-num'>Stock #{item.Stock} | <b>Year: {item.Year}</b></span>
                   <h2>{item.Title}</h2>
-                  <p>{item.description.blocks[0].text}</p>
+                  <p>{item.description}</p>
                   
                 </div>
                 <Link to={`/trailers-detail/${item.id}`} className='view-truck-button flex fl-space-between'>View Details <i className="bi bi-arrow-right"></i></Link>

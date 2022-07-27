@@ -1,6 +1,6 @@
 const TruckOptions = [
   { value: 'Cruise', label: 'Cruise', icon:"bi bi-speedometer " },
-  { value: 'Jake Brake', label: 'Jake Brake ', icon:"bi bi-car-front" },
+  { value: 'Jake Brake', label: 'Jake Brake', icon:"bi bi-car-front" },
   { value: 'GPS', label: 'GPS', icon:"bi bi-compass" },
   { value: 'A/C', label: 'A/C', icon:"bi bi-fan" },
   { value: 'Radio Equipment', label: 'Radio Equipment', icon:"bi bi-broadcast" }

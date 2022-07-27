@@ -19,30 +19,30 @@ export const DashboardHome = (props) => {
             </div>
           </div>
           <div className='single-block-dash'>
-            <i class="bi bi-truck"></i>
+            <i class="bi bi-minecart-loaded"></i>
             <div>
               <h3>{props.trailers && props.trailers.length}</h3>
               <p>Total Trailers</p>
             </div>
           </div>
           <div className='single-block-dash'>
-            <i class="bi bi-truck"></i>
+            <i class="bi bi-bar-chart-line"></i>
             <div>
-              <h3>0</h3>
+              <h3>{props.Inquires && props.Inquires.length}</h3>
               <p>Total Inquires</p>
             </div>
           </div>
           <div className='single-block-dash'>
-            <i class="bi bi-truck"></i>
+            <i class="bi bi-mailbox"></i>
             <div>
-              <h3>0</h3>
+              <h3>{props.TruckPost && props.TruckPost.length}</h3>
               <p>Total New Listings</p>
             </div>
           </div>
           <div className='single-block-dash'>
-            <i class="bi bi-truck"></i>
+            <i class="bi bi-cash"></i>
             <div>
-              <h3>0</h3>
+              <h3>{props.SalesPost && props.SalesPost.length}</h3>
               <p>Total Bill of Sales</p>
             </div>
           </div>
