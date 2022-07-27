@@ -5,13 +5,12 @@ import "firebase/compat/functions";
 
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyCkze8xPsuVbfvQwTMPOItgYF60h_38ssI",
-  authDomain: "abwork-75b9a.firebaseapp.com",
-  projectId: "abwork-75b9a",
-  storageBucket: "abwork-75b9a.appspot.com",
-  messagingSenderId: "995671228533",
-  appId: "1:995671228533:web:f73bccf200813eec3d783c"
-
+  apiKey: "AIzaSyA67WT2oLXR-mgVLsmCNHbmeHHcy4h8Ev4",
+  authDomain: "fastway-trucking.firebaseapp.com",
+  projectId: "fastway-trucking",
+  storageBucket: "fastway-trucking.appspot.com",
+  messagingSenderId: "711527336437",
+  appId: "1:711527336437:web:33366b320ee948dfb3b8bc"
 });
 
 //auth and firestore references
