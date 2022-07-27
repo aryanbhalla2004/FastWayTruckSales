@@ -45,3 +45,4 @@ export const print = () => {
 
   html2pdf().from(element).set(opt).save();
 };
+
