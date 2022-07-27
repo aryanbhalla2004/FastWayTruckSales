@@ -11,6 +11,7 @@ const app = firebase.initializeApp({
   storageBucket: "abwork-75b9a.appspot.com",
   messagingSenderId: "995671228533",
   appId: "1:995671228533:web:f73bccf200813eec3d783c"
+
 });
 
 //auth and firestore references

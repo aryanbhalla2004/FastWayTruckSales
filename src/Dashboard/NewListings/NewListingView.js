@@ -9,15 +9,11 @@ const NewListingView = (props) => {
     ...props.TruckPost.find((itm) => itm.id == id).data,
     status:"viewed"
   });
-  useEffect(() => {
-    fetchData();
-  }, [])
-  const fetchData = async() => {
-    firebase.firestore().collection('TruckPost').doc(id).get()
-    .then((docRef) =>  {
-      setListing(docRef.data());
-    });
 
+  useEffect(() => {
+    func();
+  }, [])
+  const func = async (e) => {
     try{
       let userDetails = await props.edit(userInput, "TruckPost",id);
     }
@@ -36,7 +32,33 @@ const NewListingView = (props) => {
           </div>
         </div>
         <section className="card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
-          <p>{listing != undefined && listing.ContactEmail}</p>
+        <div class=" form-row"><h2 class="h4 mb-4">Listing Details</h2></div>
+          <div className='  flex-row space-between form-row mt-5 '>
+          {(userInput.ContactName) ? <p className="col"><strong>Name: </strong>{ userInput.ContactName}</p> : ""}
+          {(userInput.ContactEmail) ? <a className="col" href = {`mailto: ${ userInput.ContactEmail} `}><strong>Email: </strong>{userInput != undefined && userInput.ContactEmail}</a> : ""}
+          {(userInput.ContactPhone) ? <p className="col" ><strong>Phone Number: </strong>{ userInput.ContactPhone}</p>: ""}
+          </div>
+          <div class=" form-row"><h2 class="h4 mb-4 mt-5">Truck Details</h2></div>
+          <div className='flex-row space-between form-row mt-5 '>
+          <p className="col"><strong>Color: </strong>{( userInput.Color) ? userInput.Color : "N/A"}</p>
+          <p className="col"><strong>Engine: </strong>{( userInput.Engine)  ? userInput.Engine : "N/A" }</p> 
+          <p className="col"><strong>FuelTank: </strong>{( userInput.FuelTank)  ? userInput.FuelTank : "N/A" }</p>
+          </div>
+          <div className='flex-row space-between mt-5 form-row'>
+          <p className="col"><strong>Mileage: </strong>{(userInput.Mileage) ? userInput.Mileage : "N/A"}</p>
+          <p className="col"><strong>Model: </strong>{(userInput.Model)  ? userInput.Model : "N/A" }</p> 
+          <p className="col"><strong>Ratio: </strong>{( userInput.Ratio)  ? userInput.Ratio : "N/A" }</p>
+          </div>
+          <div className='flex-row space-between mt-5 form-row'>
+          <p className="col"><strong>Sleeper: </strong>{(userInput.Sleeper) ? userInput.Sleeper : "N/A"}</p>
+          <p className="col"><strong>Transmission: </strong>{(userInput.Transmission)  ? userInput.Transmission : "N/A" }</p> 
+          <p className="col"><strong>TruckMake: </strong>{( userInput.TruckMake)  ? userInput.TruckMake : "N/A" }</p>
+          </div>
+          <div className='flex-row space-between mt-5 form-row'>
+          <p className="col"><strong>Vin: </strong>{(userInput.Vin) ? userInput.Vin : "N/A"}</p>
+          <p className="col"><strong>WheelBase: </strong>{(userInput.WheelBase)  ? userInput.WheelBase : "N/A" }</p> 
+          <p className="col"><strong>Year: </strong>{( userInput.Year)  ? userInput.Year : "N/A" }</p>
+          </div>
         </section>
       </div>
     </div>

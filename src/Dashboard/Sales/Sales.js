@@ -31,7 +31,7 @@ export const Sales = (props) => {
           <h3>Bill of Sales</h3>
           <Link to="/dashboard/sales/add" className="btn-general primary-btn">Create <i class="bi bi-plus-lg"></i> </Link>
         </div>
-        <section className="card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
+        <section className="card card-light card-body border-0 shadow-sm p-4 mt-5 sec-response" id="basic-info">
           <table className='activity-table bill-table'>
             <thead>
               <th>Invoice #</th>
@@ -44,9 +44,9 @@ export const Sales = (props) => {
               {!loading && (sales && sales.map((item, index) => (
                 <tr key={index}>
                   <td>
-                    {item.dealorNum}
+                    {item.invoice}
                   </td>
-                  <td><span>{item.fName} {item.lName}</span>{item.email}</td>
+                  <td><span>{item.serialNum}</span>{item.email}</td>
                   <td>
                     {item.status === "Pending" && <div className='new-item'>Pending</div>}  
                     {item.status === "Done" && <div className='old-item'>Done</div>}

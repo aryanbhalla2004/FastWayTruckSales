@@ -7,6 +7,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const SalesAdd = (props) => {
+  console.log(props.ExtraInfo.data.totalInvoice);
   const history = useNavigate();
   const [error, setError] = useState("");
   const [userInput, setUserInput] = useState({
@@ -34,6 +35,8 @@ const SalesAdd = (props) => {
     Vin: "",
     salesRep: "",
     status:"",
+    re:"",
+    invoice:(parseInt(props.ExtraInfo.data.totalInvoice) + 1)
   });
 
   const updateUserInput = (e) => {
@@ -47,9 +50,21 @@ const SalesAdd = (props) => {
     e.preventDefault();
 
     var item = userInput;
+    updateInvoice();
     try{
       let userDetails = await props.add("Sales",item);
       history('/dashboard/sales');
+    }
+    catch(e){
+      setError(e.message);
+    }
+  }
+
+  const updateInvoice = async(e) => {
+    console.log(props.ExtraInfo);
+    var item = { totalInvoice: userInput.invoice};
+    try{
+      let d = await props.edit(item,"ExtraInfo",props.ExtraInfo.id);
     }
     catch(e){
       setError(e.message);
@@ -103,6 +118,10 @@ const SalesAdd = (props) => {
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Email Address<span>*</span></label>
               <input className="form-control form-control-md form-control-dark" id="phone" name="email" type="email" onChange={updateUserInput}/>
+            </div>
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">Re:<span>*</span></label>
+              <input className="form-control form-control-md form-control-dark" id="re" name="re" type="text" onChange={updateUserInput}/>
             </div>
           </div>
           <div className="row form-row">

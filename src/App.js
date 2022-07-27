@@ -45,6 +45,8 @@ const App = () => {
   const [trailers, setTrailers] = useState();
   const [Inquires, setInquires] = useState();
   const [TruckPost, setTruckPost] = useState();
+  const [SalesPost, setSalesPost] = useState();
+  const [ExtraInfo, setExtraInfo] = useState();
   useEffect(() => {
     db.collection("TruckPost").onSnapshot((querySnapshot) => {
       let tempList = [];
@@ -52,6 +54,24 @@ const App = () => {
         tempList.push({data: doc.data(),id : doc.id});
       });
       setTruckPost(tempList);
+    });
+  }, [])
+  useEffect(() => {
+    db.collection("ExtraInfo").onSnapshot((querySnapshot) => {
+      let tempList = [];
+      querySnapshot.forEach((doc) => {
+        tempList.push({data: doc.data(),id : doc.id});
+      });
+      setExtraInfo(tempList[0]);
+    });
+  }, [])
+  useEffect(() => {
+    db.collection("Sales").onSnapshot((querySnapshot) => {
+      let tempList = [];
+      querySnapshot.forEach((doc) => {
+        tempList.push({data: doc.data(),id : doc.id});
+      });
+      setSalesPost(tempList);
     });
   }, [])
   useEffect(() => {
@@ -169,7 +189,7 @@ const App = () => {
           <Route path="trailers/edit/:id" element={<TrailerEdit trailers={trailers} getData={getData} edit={edit}/>}/>
 
           <Route path="product-inquire" element={<DashboardInquires getData={getData}/>} />
-          <Route path="product-inquire/:id" element={<InquireView Inquires={Inquires}getData={getData} edit={edit} del={del}/>}/>
+          <Route path="product-inquire/:id" element={<InquireView trucks={trucks} trailers={trailers} Inquires={Inquires} getData={getData} edit={edit} del={del}/>}/>
 
           <Route path="new-listings" element={<DashboardListings  getData={getData} del={del}/>} />
           <Route path="new-listing/:id" element={<NewListingView TruckPost={TruckPost} getData={getData}  edit={edit} del={del}/>}/>
@@ -177,8 +197,8 @@ const App = () => {
           //! Bill of Sales
           <Route path="sales" element={<DashboardSales getData={getData} del={del}/>} />
           <Route path="sales/:id" element={<SaleView getData={getData} del={del}/>}/>
-          <Route path="sales/add" element={<SalesAdd add={add}/>}/>
-          <Route path="sales/edit/:id" element={<SalesEdit getData={getData} edit={edit}/>}/>
+          <Route path="sales/add"  element={<SalesAdd ExtraInfo={ExtraInfo} SalesPost={SalesPost} edit={edit} add={add}/>}/>
+          <Route path="sales/edit/:id"  element={<SalesEdit  SalesPost={SalesPost} getData={getData} edit={edit}/>}/>
         </Route>
 
         <Route path="/" element={<LandingPage setPage={setPage} setLoading={setLoading} page={page}/>}>

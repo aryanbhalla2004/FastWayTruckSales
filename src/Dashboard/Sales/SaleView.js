@@ -23,15 +23,18 @@ const SaleView = () => {
   }
 
   const getTotal = (gst, pst) => {
+    //! total value before taxes (product + warranty + admin fee)
     let totalValue = listing && (parseInt(listing.amm) + parseInt(listing.warranty) + listing.adminFee);
+    //! Total GST tax on total value
+    let gstCost = parseInt(totalValue) * 0.05;
+    //! Total PST tax on total value
+    let pstCost =  parseInt(totalValue) * 0.07;
 
-    if(gst) {
-      totalValue = (totalValue && parseInt(totalValue) * 1.05)
-    }
+    if(gst)
+      totalValue += gstCost
 
-    if(pst) {
-       totalValue = totalValue * 1.07
-    }
+    if(pst)
+      totalValue += pstCost
 
     return totalValue.toFixed(2);
   }
@@ -49,7 +52,7 @@ const SaleView = () => {
           <h3>View Sale</h3>
           <div className='d-flex'>
             <Link to="/dashboard/sales/" className="btn-general primary-btn mr-3"><i class="bi bi-arrow-left"></i> Back</Link>
-            <Link to="/dashboard/sales/edit/asdasdasd" className="btn-general mr-3">Edit <i class="bi bi-binoculars"></i> </Link>
+            <Link to={`/dashboard/sales/edit/${id}`} className="btn-general mr-3">Edit <i class="bi bi-binoculars"></i> </Link>
             <button className="btn-general edit-button" onClick={GenerateFile}>{loading ? <div class="spinner-border text-light" role="status"></div> : <><i class="bi bi-file-arrow-down"></i>  Download</>}</button>
           </div>
         </div>
@@ -63,7 +66,10 @@ const SaleView = () => {
                 <p><i class="bi bi-globe"></i> www.fastwaytrucksales.com</p>
               </div>
               <img src={logo} width="120" className='logo-box'/>  
-              <h2>Dealer No: <span>5661</span></h2>
+              <div className="dealer-invo">
+                <h2>Dealer No: <span>5661</span></h2>
+              <h2>Invoice No: <span>{listing && listing.invoice}</span></h2>
+              </div>
             </div>
           </div>
           <div class="header-title-info">
@@ -94,7 +100,7 @@ const SaleView = () => {
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Re:</h3>
-                  <span className='pdf-edit-title'>aryanbhalla66@gmail.com</span>
+                  <span className='pdf-edit-title'>{listing && listing.re}</span>
                 </li>
               </ul>
             </div>
@@ -223,7 +229,7 @@ const SaleView = () => {
                   </li>
                   <li>
                     <h3 className='pdf-edit-title-small'>Balance:</h3>
-                    <span className='pdf-edit-title'>$ {listing && getTotal(true, true) - parseInt(listing.deposit).toFixed(2)}</span>
+                    <span className='pdf-edit-title'>$ {listing && (getTotal(true, true) - parseInt(listing.deposit)).toFixed(2)}</span>
                   </li>
                   <li>
                     <h2 className='pdf-edit-title'>Total:</h2>

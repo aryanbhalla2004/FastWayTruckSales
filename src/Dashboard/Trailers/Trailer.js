@@ -33,7 +33,7 @@ export const Trailers = () => {
           <h3>My Trailers</h3>
           <Link to="/dashboard/trailers/add" className="btn-general primary-btn">Create <i class="bi bi-plus-lg"></i> </Link>
         </div>
-        <section className="card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
+        <section className="card card-light card-body border-0 shadow-sm p-4 mt-5 sec-response" id="basic-info">
           <table className='activity-table'>
             <thead>
               <th>Stocks #</th>
