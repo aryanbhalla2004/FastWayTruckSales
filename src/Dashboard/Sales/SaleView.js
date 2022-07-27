@@ -33,10 +33,22 @@ const SaleView = () => {
     if(gst)
       totalValue += gstCost
 
-    if(pst)
+    if(pst && listing.pst === "true")
       totalValue += pstCost
 
     return totalValue.toFixed(2);
+  }
+
+  const getGst = () => {
+    let totalValue = listing && (parseInt(listing.amm) + parseInt(listing.warranty) + listing.adminFee);
+
+    return totalValue * 0.05
+  }
+
+  const getPst = () => {
+    let totalValue = listing && (parseInt(listing.amm) + parseInt(listing.warranty) + listing.adminFee);
+
+    return totalValue * 0.07
   }
 
   const GenerateFile = () => {
@@ -137,10 +149,10 @@ const SaleView = () => {
                 <li class="col-half flex-fix">
                   <div className=''>
                     <h3 className='pdf-edit-title'>Serial Number:</h3>
-                    <span className='pdf-edit-title'>{listing && listing.serialNum}</span>
+                    <span className='pdf-edit-title-small'>{listing && listing.serialNum}</span>
                   </div>
                   <div className='col-half'>
-                    <h3 className='pdf-edit-title'>VIN:</h3>
+                    <h3 className='pdf-edit-title'>Refer for Serial Number:</h3>
                     <span className='pdf-edit-title'>{listing && listing.Vin}</span>
                   </div>
                 </li>
@@ -154,7 +166,10 @@ const SaleView = () => {
           <div class="content-bill-of-sale-info">
             <div class="content-sizing content-bill-of-sale-wrapper">
               <div class="left-side-info">
-                <p className='pdf-edit-title-small'>SOLD AS EQUIPPED AT TIME OF DELIVERY, PLUS:</p>
+                <div>
+                  <p className='pdf-edit-title-small'>SOLD AS EQUIPPED AT TIME OF DELIVERY, PLUS:</p>
+                  <h4 className='mt-4'>{listing && listing.textbox}</h4>
+                </div>
                 <div class="signature-field-bottom">
                   <div class="content-sizing signature-field-wrapper">
                     <ul>
@@ -171,11 +186,11 @@ const SaleView = () => {
                       <li className='light-pd'>
                         <div class="container-space">
                           <div class="sigature-box">
-                            <h4>signature of Vendor</h4>
+                            <h4>signature of Manager</h4>
                           </div>
                           <div class="sigature-box">
                             <h4 class="col-half">Date</h4>
-                            <h4 class="col-half">Time</h4>
+                            <h4 class="col-half">Title</h4>
                           </div>
                         </div>
                       </li>
@@ -203,8 +218,8 @@ const SaleView = () => {
                     <span  className='pdf-edit-title'>$ {listing && listing.adminFee.toFixed(2)}</span>
                   </li>
                   <li>
-                    <h3 className='pdf-edit-title-small'>Puchaser's GST #:</h3>
-                    <span  className='pdf-edit-title'>{listing && listing.puchaserGst}</span>
+                    <h3 className='pdf-edit-title-small'>G.S.T #(789007747RT0001):</h3>
+                    <span  className='pdf-edit-title'>$ {listing && getGst().toFixed(2)}</span>
                   </li>
                 </ul>
               </div>
@@ -216,8 +231,8 @@ const SaleView = () => {
                      <span className='pdf-edit-title'>$ {listing && getTotal(true, false)}</span>
                   </li>
                   <li>
-                    <h3 className='pdf-edit-title-small'>P.S.T (PST#):</h3>
-                    <span className='pdf-edit-title'>139101-0</span>
+                    <h3 className='pdf-edit-title-small'>P.S.T (PST# 139101-0):</h3>
+                    <span className='pdf-edit-title'>$ {listing && listing.pst === "true" ? getPst().toFixed(2) : "0.00"}</span>
                   </li>
                   <li>
                     <h3 className='pdf-edit-title-small'>Sub-Total (incl GST+PST):</h3>

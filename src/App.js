@@ -36,6 +36,7 @@ import TrailerEdit from './Dashboard/Trailers/TrailerEdit';
 import TruckView from './Dashboard/Trucks/TruckView';
 import TruckAdd from './Dashboard/Trucks/TruckAdd';
 import TruckEdit from './Dashboard/Trucks/TruckEdit';
+import DashboardHome from './Dashboard/DashboardHome';
 const App = () => {
   const history = useNavigate();
   const [currentUser, setCurrentUser] = useState();
@@ -176,6 +177,7 @@ const App = () => {
     <AnimatePresence>
       <Routes>
         <Route path="dashboard" element={currentUser ? <Dashboard del={del} getData={getData} add={add} edit={edit} currentUser={currentUser} logout={logout}/> : <Navigate to="/login"/>}>
+          <Route index element={<DashboardHome trucks={trucks} trailers={trailers} TruckPost={TruckPost} SalesPost={SalesPost}/>}/>
           //! Trucks
           <Route path="trucks" element={<DashboardTruck getData={getData} del={del}/>}/>
           {/* <Route path="trucks/:id" element={<TruckView trucks={trucks} del={del}/>}/> */}

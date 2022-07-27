@@ -29,7 +29,6 @@ export const NewListings = (props) => {
       <div className='content-sizing-db wrapper-db-content'>
         <div className='header-and-create-button'>
           <h3>New Listings</h3>
-          <Link to="/dashboard/trucks/add" className="btn-general primary-btn">Clear All <i class="bi bi-dash-lg"></i> </Link>
         </div>
         <section className="card card-light card-body border-0 shadow-sm p-4 mt-5 sec-response" id="basic-info">
           <table className='activity-table listing-table'>

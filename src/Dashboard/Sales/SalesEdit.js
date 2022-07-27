@@ -27,7 +27,7 @@ const SalesEdit = (props) => {
     var item = userInput;
     try{
       let userDetails = await props.edit(item, "Sales", id);
-      history('/dashboard/sales');
+      history(`/dashboard/sales/${id}`);
     }
     catch(e){
       setError(e.message);
@@ -139,7 +139,7 @@ const SalesEdit = (props) => {
               <input className="form-control form-control-md form-control-dark" id="" name="serialNum" value={userInput.serialNum} type="text" onChange={updateUserInput} />
             </div>
             <div className="col">
-              <label className="form-label text-dark" htmlFor="c-name">Vin #<span>*</span></label>
+              <label className="form-label text-dark" htmlFor="c-name">Refer for Serial Number #<span>*</span></label>
               <input className="form-control form-control-md form-control-dark" id="" name="Vin" value={userInput.Vin} type="text" onChange={updateUserInput}/>
             </div>
             <div className="col">
@@ -180,6 +180,20 @@ const SalesEdit = (props) => {
                 <option value="Pending">Pending</option>
                 <option value="Done">Done</option>
               </select>
+            </div>
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">P.S.T Cost<span>*</span></label>
+              <select className="form-control form-control-md form-control-dark" id="type" name="pst" value={userInput.pst} required onChange={updateUserInput}>
+                <option value="" disabled selected >Select</option>
+                <option value="true">Applied</option>
+                <option value="false">Not Applied</option>
+              </select>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">Text Box<span>*</span></label>
+              <textarea className="form-control form-control-md form-control-dark" id="type" name="textbox" value={userInput.textbox} required onChange={updateUserInput}></textarea>
             </div>
           </div>
         </form> 

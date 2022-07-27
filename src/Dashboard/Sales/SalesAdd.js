@@ -33,7 +33,9 @@ const SalesAdd = (props) => {
     deposit: 0,
     serialNum: "",
     Vin: "",
+    textbox: "",
     salesRep: "",
+    pst: true,
     status:"",
     re:"",
     invoice:(parseInt(props.ExtraInfo.data.totalInvoice) + 1)
@@ -176,7 +178,7 @@ const SalesAdd = (props) => {
               <input className="form-control form-control-md form-control-dark" id="make" name="serialNum" type="text" onChange={updateUserInput} />
             </div>
             <div className="col">
-              <label className="form-label text-dark" htmlFor="c-name">Vin #<span>*</span></label>
+              <label className="form-label text-dark" htmlFor="c-name">Refer for Serial Number #<span>*</span></label>
               <input className="form-control form-control-md form-control-dark" id="model" name="Vin" type="text" onChange={updateUserInput}/>
             </div>
             <div className="col">
@@ -217,6 +219,20 @@ const SalesAdd = (props) => {
                 <option value="Pending">Pending</option>
                 <option value="Done">Done</option>
               </select>
+            </div>
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">P.S.T Cost<span>*</span></label>
+              <select className="form-control form-control-md form-control-dark" id="type" name="pst" required onChange={updateUserInput}>
+                <option value="" disabled selected >Select</option>
+                <option value="true">Applied</option>
+                <option value="false">Not Applied</option>
+              </select>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">Text Box<span>*</span></label>
+              <textarea className="form-control form-control-md form-control-dark" id="type" name="textbox" required onChange={updateUserInput}></textarea>
             </div>
           </div>
         </form> 

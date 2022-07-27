@@ -246,3 +246,36 @@
 .bill-table > tbody > tr,  .bill-table > thead {
   grid-template-columns: .5fr 1.4fr .5fr .5fr 2fr
 }
+
+.single-block-dash {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #ddd;
+  align-items: center;
+  gap: 20px;
+  border-radius: 4px;
+}
+
+.single-block-dash > i {
+  background-color: #ddd;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.single-block-dash > div > h3 {
+  white-space: nowrap;
+  font-size: 1.5rem;
+}
+
+.single-block-dash > div > p {
+  white-space: nowrap;
+  font-weight: 300;
+}
+
+.grid-box-dash {
+  grid-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
