@@ -27,6 +27,12 @@ export const print = () => {
   var smallerText = element.querySelectorAll(".pdf-edit-title-small");
   smallerText.forEach(elem => {
    elem.style.fontSize = ".7rem";
+   elem.style.fontWeight = "500";
+  });
+
+  var smallerText = element.querySelectorAll(".pdf-edit-title");
+  smallerText.forEach(elem => {
+   elem.style.fontWeight = "500";
   });
 
   element.querySelectorAll('.light-pd').forEach(elm => {

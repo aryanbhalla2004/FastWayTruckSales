@@ -92,15 +92,15 @@ const SaleView = () => {
               <ul className='dropdown-pdf light-padding'>
                 <li>
                   <h3 className='pdf-edit-title'>Date:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.date}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.date}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>I/We:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.iwe}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.iwe}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Phone Number:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.phone}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.phone}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Address:</h3>
@@ -108,11 +108,11 @@ const SaleView = () => {
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Email Address (end customer):</h3>
-                  <span className='pdf-edit-title'>{listing && listing.email}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.email}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Re:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.re}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.re}</span>
                 </li>
               </ul>
             </div>
@@ -122,27 +122,27 @@ const SaleView = () => {
               <ul className='light-padding'>
                 <li>
                   <h3 className='pdf-edit-title'>Year:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.year}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.year}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Make:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.make}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.make}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Model:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.model}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.model}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Odometer reading:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.oReading} KM</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.oReading} KM</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Color:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.color}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.color}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Stock:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.stock}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.stock}</span>
                 </li>
               </ul>
               <ul class="col-2-flex-fix light-padding">
@@ -153,12 +153,12 @@ const SaleView = () => {
                   </div>
                   <div className='col-half'>
                     <h3 className='pdf-edit-title'>Reefer  Serial Number:</h3>
-                    <span className='pdf-edit-title'>{listing && listing.Vin}</span>
+                    <span className='pdf-edit-title-small'>{listing && listing.Vin}</span>
                   </div>
                 </li>
                 <li class="col-half">
                   <h3 className='pdf-edit-title'>Salerep:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.salesRep}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.salesRep}</span>
                 </li>
               </ul>
             </div>
@@ -176,21 +176,21 @@ const SaleView = () => {
                       <li className='light-pd'>
                         <div class="container-space">
                           <div class="sigature-box">
-                            <h4>signature of Purchaser</h4>
+                            <h4 className='pdf-edit-title-small'>signature of Purchaser</h4>
                           </div>
                           <div class="sigature-box">
-                            <h4>co-signer (if any)</h4>
+                            <h4 className='pdf-edit-title-small'>co-signer (if any)</h4>
                           </div>
                         </div>
                       </li>
                       <li className='light-pd'>
                         <div class="container-space">
                           <div class="sigature-box">
-                            <h4>signature of Manager</h4>
+                            <h4 className='pdf-edit-title-small'>signature of Manager</h4>
                           </div>
                           <div class="sigature-box">
-                            <h4 class="col-half">Date</h4>
-                            <h4 class="col-half">Title</h4>
+                            <h4 class="col-half pdf-edit-title-small">Date</h4>
+                            <h4 class="col-half pdf-edit-title-small">Title</h4>
                           </div>
                         </div>
                       </li>
