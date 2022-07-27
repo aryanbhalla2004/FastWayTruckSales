@@ -1,10 +1,10 @@
-
 const TruckOptions = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+  { value: 'Cruise', label: 'Cruise', icon:"bi bi-speedometer " },
+  { value: 'Jake Brake', label: 'Jake Brake ', icon:"" },
+  { value: 'GPS', label: 'GPS', icon:"bi bi-compass" },
+  { value: 'A/C', label: 'A/C', icon:"bi bi-fan" },
+  { value: 'Radio Equipment', label: 'Radio Equipment', icon:"bi bi-broadcast" }
 ]
-
 
 const trailerTypeList = [
 "B-Train",

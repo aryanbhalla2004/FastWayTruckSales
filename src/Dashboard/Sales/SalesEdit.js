@@ -139,7 +139,7 @@ const SalesEdit = (props) => {
               <input className="form-control form-control-md form-control-dark" id="" name="serialNum" value={userInput.serialNum} type="text" onChange={updateUserInput} />
             </div>
             <div className="col">
-              <label className="form-label text-dark" htmlFor="c-name">Refer for Serial Number #<span>*</span></label>
+              <label className="form-label text-dark" htmlFor="c-name">Reefer  Serial Number #<span>*</span></label>
               <input className="form-control form-control-md form-control-dark" id="" name="Vin" value={userInput.Vin} type="text" onChange={updateUserInput}/>
             </div>
             <div className="col">

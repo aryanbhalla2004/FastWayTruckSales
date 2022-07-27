@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 import { useNavigate, useParams } from "react-router-dom";
 import Select from 'react-select';
-import TruckOptions from "../../Util/options.js"
+import Truc from "../../Util/options.js"
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const TruckEdit = (props) => {
@@ -280,7 +280,7 @@ const TruckEdit = (props) => {
     <Select
         onChange={setAmen}
         value={amen}
-        options={TruckOptions}
+        options={Truc.TruckOptions}
         isMulti
         isSearchable
       />

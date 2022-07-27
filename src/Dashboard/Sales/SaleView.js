@@ -104,7 +104,7 @@ const SaleView = () => {
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Address:</h3>
-                  <span className='pdf-edit-title'>136 Valley Brook Rd</span>
+                  <span className='pdf-edit-title'>{listing && listing.address} {listing && listing.city} {listing && listing.state} {listing && listing.pCode}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Email Address (end customer):</h3>
@@ -152,7 +152,7 @@ const SaleView = () => {
                     <span className='pdf-edit-title-small'>{listing && listing.serialNum}</span>
                   </div>
                   <div className='col-half'>
-                    <h3 className='pdf-edit-title'>Refer for Serial Number:</h3>
+                    <h3 className='pdf-edit-title'>Reefer  Serial Number:</h3>
                     <span className='pdf-edit-title'>{listing && listing.Vin}</span>
                   </div>
                 </li>
