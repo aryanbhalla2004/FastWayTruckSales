@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Select from 'react-select';
 import options from "../../Util/options.js"
-import { Editor } from "react-draft-wysiwyg";
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const TrailerEdit = (props) => {
@@ -12,7 +12,7 @@ const TrailerEdit = (props) => {
   const [userInput, setuserInput] = useState({
     ...props.trailers.find((itm) => itm.id == id).data
   });
-  const [editor, setEditor] = useState(userInput.description);
+
 
   const updateuserInput = (e) => {
     setuserInput(prevInput => ({
@@ -23,9 +23,9 @@ const TrailerEdit = (props) => {
   
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(editor);
+
     var item = userInput;
-    item.description = editor;
+
     try{
       let userDetails = await props.props.edit(item, "Trailers", id);
       history('/dashboard/trailers');
@@ -234,22 +234,23 @@ const TrailerEdit = (props) => {
   </div>
   
   </form>
-  <section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
-  
-  <div className='dropzone'>
-  <div className="dz-message">
-     <h4 className="my-4">Drop files here or click to upload.</h4>                         
-     </div>
-  </div>
-  </section>
+      <section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
+      <div className='dropzone'>
+        <div className="dz-message">
+        <h4 className="my-4">Drop files here or click to upload.</h4>  
+        <input type="file"/>                      
+        </div>
+      </div>
+      </section>
     
-        <Editor
-        contentState={editor}
-        onChange={setEditor}
-        wrapperClassName="editor drop card card-light card-body border-0 shadow-sm p-4 mt-5"
-        editorClassName="border-2 shadow-sm"
-        toolbarClassName="border-2 shadow-sm"
-      />
+  <section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
+        <div className="row">
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">Description<span>*</span></label>
+              <textarea className="form-control form-control-md form-control-dark" id="type" name="description" value={userInput.description} required onChange={updateuserInput}></textarea>
+            </div>
+          </div>
+          </section>
     </div>
     
   </div>

@@ -3,9 +3,16 @@ import {Link} from 'react-router-dom';
 import { useNavigate, useParams } from "react-router-dom";
 import Select from 'react-select';
 import truc from "../../Util/options.js"
-import { Editor } from "react-draft-wysiwyg";
+import imageCompression from 'browser-image-compression';
+import Axios from "axios";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const TruckAdd = (props) => {
+  const [loading, setloading] = useState({
+    one: false,
+    two: false,
+    three: false,
+    four: false,
+  })
   const history = useNavigate();
   const [error, setError] = useState("");
   const [userInput, setUserInput] = useState({
@@ -23,12 +30,12 @@ const TruckAdd = (props) => {
     WheelBase:"",
     Sleeper:"",
     amenities:[],
+    images: {one: '', two: '', three: '', four: ''},
     description:"",
     Title:"",
     Date: new Date().toLocaleDateString("en-US"),
     Quantity:""
   });
-  const [editor, setEditor] = useState([]);
   const [amen, setAmen] = useState([]);
 
   const updateUserInput = (e) => {
@@ -40,9 +47,7 @@ const TruckAdd = (props) => {
   
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(editor);
     var item = userInput;
-    item.description = editor;
     item.amenities = amen;
     try{
       let userDetails = await props.add("Trucks",item);
@@ -52,6 +57,58 @@ const TruckAdd = (props) => {
       setError(e.message);
     }
   }
+
+  const handleImageUpload = async (event, location) => {
+    setloading(prevInput => ({
+      ...prevInput, [location]: true
+    }));
+    const reader = new FileReader();
+    const imageFile = event.target.files[0];
+    console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+  
+    const options = {
+      maxSizeMB: 1,
+      useWebWorker: false,
+      onProgress: progressUploadingImage,       
+      maxIteration: 18,
+    }
+
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+      await uploadToServer(compressedFile, location);
+    } catch (error) {
+      console.log(error);
+    }
+  
+  }
+
+  const uploadToServer = async (compressedFile, location) => {
+    const formData = new FormData();
+    formData.append('file', compressedFile);
+    formData.append('upload_preset', 'pvwvpf90');
+    Axios.post("https://api.cloudinary.com/v1_1/dgjfoz5o1/image/upload", formData
+    ).then(async (response) => await showUploadedImage(response, location));
+  }
+
+  const showUploadedImage = (response, location) => {
+    console.log(response);
+    setUserInput(prevInput => ({
+      ...prevInput, images: {...userInput.images, [location]: response.data.secure_url}
+    }));
+
+    setloading(prevInput => ({
+      ...prevInput, [location]: false
+    }));
+  }
+
+  const progressUploadingImage = (progress) => {
+    console.log(progress);
+
+  }
+
   return (
     <div className='header-content-right-page'>
       <div className='content-sizing-db wrapper-db-content'>
@@ -294,21 +351,44 @@ const TruckAdd = (props) => {
     </div>
   </div>
 </form>
-<section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
+      <section className=" shadow-sm p-4 mt-5 grid-fix-pic" id="basic-info">
 
-  <div className='dropzone'>
-  <div className="dz-message">
-       <h4 className="my-4">Drop files here or click to upload.</h4>                         
-       </div>
-  </div>
-</section>
+        <div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.one})`}}> 
+          <div>   
+            {!loading.one ? <input type="file" onChange={(e) => handleImageUpload(e, "one")}/> : <div class="spinner-border text-light" role="status"></div>}
+          </div>                   
+        </div>
+
+
+        <div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.two})`}}>     
+          <div>   
+          {!loading.two ? <input type="file" onChange={(e) => handleImageUpload(e, "two")}/> : <div class="spinner-border text-light" role="status"></div>}
+          </div>                             
+        </div>
+
+
+        <div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.three})`}}>     
+          <div>  
+          {!loading.three ? <input type="file" onChange={(e) => handleImageUpload(e, "three")}/> : <div class="spinner-border text-light" role="status"></div>}        
+          </div>                 
+        </div>
+
+
+        <div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.four})`}}>     
+          <div>  
+          {!loading.four ? <input type="file" onChange={(e) => handleImageUpload(e, "four")}/>   : <div class="spinner-border text-light" role="status"></div>}    
+          </div>                        
+        </div>
+      </section>
       
-          <Editor
-          onChange={setEditor}
-          wrapperClassName="editor drop card card-light card-body border-0 shadow-sm p-4 mt-5"
-          editorClassName="border-2 shadow-sm"
-          toolbarClassName="border-2 shadow-sm"
-        />
+<section className=" drop card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
+        <div className="row">
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">Description<span>*</span></label>
+              <textarea className="form-control form-control-md form-control-dark" id="type" name="description" required onChange={updateUserInput}></textarea>
+            </div>
+          </div>
+          </section>
       </div>
       
     </div>

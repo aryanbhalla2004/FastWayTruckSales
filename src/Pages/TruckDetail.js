@@ -8,9 +8,11 @@ import {firebase} from "../Util/Firebase";
 
 const TruckDetail = (props) => {
   const {id} = useParams();
+ 
   const [currentPage, setCurrentPage] = useState("profile");
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
+  const [currentImage, setCurrentImage] = useState();
   const [fieldError, setFieldError] = useState({
     email: false,
     name: false,
@@ -19,14 +21,23 @@ const TruckDetail = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    setCurrentImage(product && product.images.one);
+  }, [product])
 
   const fetchData = async() => {
-    firebase.firestore().collection('Trucks').doc(id).get()
+    await firebase.firestore().collection('Trucks').doc(id).get()
     .then((docRef) =>  {
       setProduct(docRef.data());
+      //setLoading(false);
+      setCurrentImage(!loading && product.images.one)
     });
+    
   }
+
+  
 
   const [inquire, setInquire] = useState({
     name: '',
@@ -115,7 +126,13 @@ const TruckDetail = (props) => {
             <div className='single-box-header'>
               <h2><i className="bi bi-image"></i> Gallery</h2>
             </div>
-            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" width="500"></img>
+            <img src={currentImage} width="500"></img>
+            <ul className='image-filter-details'>
+              <li onClick={() => setCurrentImage(product.images.one)}>{product.images.one && <img src={product.images.one} ></img>}</li>
+              <li onClick={() => setCurrentImage(product.images.two)}>{product.images.two && <img src={product.images.two} ></img>}</li>
+              <li onClick={() => setCurrentImage(product.images.three)}>{product.images.three && <img src={product.images.three} ></img>}</li>
+              <li onClick={() => setCurrentImage(product.images.four)}>{product.images.four &&<img src={product.images.four} ></img>}</li> 
+            </ul>
           </div>
           
           <div className='single-box'>
@@ -123,11 +140,7 @@ const TruckDetail = (props) => {
               <h2><i className="bi bi-grid-3x2-gap-fill"></i> Amenities</h2>
             </div>
             <ul className='flex list-of-amenities'>
-              <li><i class="bi bi-fan"></i> Air conditioner</li>
-              <li><i class="bi bi-usb-symbol"></i> USB Ports</li>
-              <li><i class="bi bi-geo"></i> GPS</li>
-              <li><i class="bi bi-speedometer2"></i> Cruise</li>
-              <li><i class="bi bi-broadcast"></i> Radio Equipment</li>
+              {product.amenities.map((item, index) => (<li key={index}><i class={`${item.icon}`}></i> {item.label}</li>))}
             </ul>
           </div>  
         </div>
@@ -136,7 +149,7 @@ const TruckDetail = (props) => {
             <div className='single-box-header'>
               <h2><i className="bi bi-justify"></i> Description</h2>
             </div>
-            <p>{product && product.description.blocks[0].text ? product.description.blocks[0].text : "No Description Found"}</p>
+            <p>{product && product.description ? product.description : "No Description Found"}</p>
           </div>
           <div className='single-box'>
             <div className='single-box-header'>

@@ -8,6 +8,7 @@ import {firebase} from "../Util/Firebase";
 
 const TrailerDetail = (props) => {
   const {id} = useParams();
+  const [currentImage, setCurrentImage] = useState();
   const [currentPage, setCurrentPage] = useState("profile");
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
@@ -21,6 +22,10 @@ const TrailerDetail = (props) => {
     fetchData();
   }, [])
 
+  useEffect(() => {
+    setCurrentImage(product && product.images.one);
+  }, [product])
+  
   const fetchData = async() => {
     firebase.firestore().collection('Trailers').doc(id).get()
     .then((docRef) =>  {
@@ -115,7 +120,13 @@ const TrailerDetail = (props) => {
             <div className='single-box-header'>
               <h2><i className="bi bi-image"></i> Gallery</h2>
             </div>
-            <img src="https://www.pensketruckrental.com/media-library/image.jpg?id=25624376&width=1245&quality=85&coordinates=0%2C0%2C0%2C1&height=700" width="500"></img>
+            <img src={currentImage} width="500"></img>
+            <ul className='image-filter-details'>
+              <li onClick={() => setCurrentImage(product.images.one)}>{product.images.one && <img src={product.images.one} width="100"></img>}</li>
+              <li onClick={() => setCurrentImage(product.images.two)}>{product.images.two && <img src={product.images.two} width="100"></img>}</li>
+              <li onClick={() => setCurrentImage(product.images.three)}>{product.images.three && <img src={product.images.three} width="100"></img>}</li>
+              <li onClick={() => setCurrentImage(product.images.four)}>{product.images.four &&<img src={product.images.four} width="100"></img>}</li> 
+            </ul>
           </div>
           <div className='single-box'>
             <div className='single-box-header'>

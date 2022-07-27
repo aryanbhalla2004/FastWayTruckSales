@@ -27,22 +27,8 @@ export const Sales = (props) => {
     });
   }
 
-  const filterSearch = () => {
-    // if(search != "") {
-    //   const item = sales.filter(item => item.re.toLowerCase().includes(search) || item.email.toLowerCase().includes(search))
-    //   setSales(item)
-    // } else {
-    //   fetch();
-    // }
-    
-  }
-  
   const updateUserInput = (e) => {
     setSearch(e.target.value);
-    if(search != null || search != "") {
-      filterSearch();
-    }
-    
   }
 
   return (

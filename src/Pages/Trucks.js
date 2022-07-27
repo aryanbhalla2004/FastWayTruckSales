@@ -133,13 +133,13 @@ const Trucks = () => {
             <ul className='listing-of-items flex fl-center fl-space-between'>
               {!loading && (trucks.length > 0 ? trucks.map((item, index) => (
                 <li className='single-item flex fl-col' key={index}>
-                <div className="item-image" style={{backgroundImage: `url("https://hpmis.com/backend/uploads/9487a23de53d35604b84bf4b9a24ae74k.jpeg")`}}>
+                <div className="item-image" style={{backgroundImage: `url(${item.images.one})`}}>
                   <span className='new-item'>For Sale</span>
                 </div>
                 <div className='single-item-info flex fl-col'>
                   <span className='stock-num'>Stock #{item.Stock} | <b>Year: {item.Year}</b></span>
                   <h2>{item.Title}</h2>
-                  <p>{item.description.blocks[0].text}</p>
+                  <p>{item.description}</p>
                   <ul className='flex'>
                     <li><i className="bi bi-speedometer"></i> {item.Mileage} KMs</li>
                     <li><i className="bi bi-gear-wide"></i> {item.Transmission}</li>

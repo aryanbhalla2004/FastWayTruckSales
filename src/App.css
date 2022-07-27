@@ -1017,13 +1017,13 @@ label.checkbox span {
 .dropzone {
   cursor: pointer;
   border-width: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 2px dashed #00008B;
   text-align: center !important;
-  padding: 3rem !important;
   border-radius: 0.25rem !important;
-  min-height: 150px;
   background: white;
-  padding: 20px 20px;
 }
 
 .form-row{

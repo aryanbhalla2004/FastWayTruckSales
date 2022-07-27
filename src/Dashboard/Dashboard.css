@@ -300,3 +300,63 @@
 .search-bar > input:focus {
   outline: none;
 }
+
+.grid-fix-pic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grid-fix-pic > * {
+  width: 24%;
+  border: 3px dotted #0463c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+ 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  max-width: 300px;
+  min-height: 250px;
+}
+
+.dz-message > div{
+  width: 100%;
+  color: #fff;
+  background-color: #5252528d;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-filter-details {
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+.image-filter-details > li {
+  transition: .3s;
+  width: 100px;
+  overflow: hidden;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image-filter-details > li > img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100%;
+}
+
+.image-filter-details > li:hover {
+  transform: scale(.9);
+}
