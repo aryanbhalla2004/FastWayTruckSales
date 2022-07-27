@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
-
+import truck from "../Util/Images/trucks.jpg";
+import row from "../Util/Images/whitetruck.jpg"
+import inline from "../Util/Images/inlinewhite.jpg";
 const Home = (props) => {
   useEffect(() => {
     props.setPage("home");
@@ -60,7 +62,7 @@ const Home = (props) => {
         <div className="content-widthfix about-wrapper flex fl-center fl-space-between">
           <div className="images-selection">
             <img className="floating-img-again" src="./images/location.jpeg" width="250"></img>
-            <img className="about-images" src='https://images.unsplash.com/photo-1531683760080-7bb28a630bd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80' width="200"></img>
+            <img className="about-images" src={inline} width="300"></img>
             <img className="floating-img" src='./images/lined-up.jpeg' width="300"></img>
           </div>
           <div className="about-us-content">
@@ -101,8 +103,8 @@ const Home = (props) => {
             <Link to="/about" className="btn-general primary-btn"> Read More <i className="bi bi-arrow-right"></i></Link>
           </div>
           <div className="images-selection">
-            <img className="about-images" src='./images/truck.jpeg' width="230"></img>
-            <img className="floating-img" src='./images/stackedTrailers.jpeg' width="250"></img>
+            <img className="about-images-tone" src={truck} width="300"></img>
+            <img className="floating-img-again-fix" src={row} width="320"></img>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { PageTitle } from '../Components/page-header';
 import { motion } from 'framer-motion';
 import Helmet from 'react-helmet';
-
+import inline from "../Util/Images/inlinewhite.jpg";
 export const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -28,7 +28,7 @@ export const About = () => {
         <div className="content-widthfix about-wrapper flex fl-center fl-space-between">
           <div className="images-selection">
             <img className="floating-img-again" src="./images/location.jpeg" width="250"></img>
-            <img className="about-images" src='https://images.unsplash.com/photo-1531683760080-7bb28a630bd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80' width="200"></img>
+            <img className="about-images" src={inline} width="300"></img>
             <img className="floating-img" src='./images/lined-up.jpeg' width="300"></img>
           </div>
           <div className="about-us-content">
