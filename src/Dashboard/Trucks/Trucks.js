@@ -39,7 +39,7 @@ export const Trucks = (props) => {
               <th>Title</th>
               <th>Year</th>
               <th>Created Date</th>
-              <th>Quantity</th>
+              <th>Type</th>
               <th></th>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@ export const Trucks = (props) => {
                   <td>{item.Title}</td>
                   <td>{item.Year}</td>
                   <td>{item.Date}</td>
-                  <td>{item.Quantity}</td>
+                  <td>{item.TruckType}</td>
                   <td><a href="#" className="btn-danger delete-button-table" onClick={() => {setDeleteBox(true); setDeleteId({...item, type: "Trucks"})}}><i class="bi bi-trash3"></i> Delete</a><Link className="edit-button" to={`/truck-detail/${item.id}`}><i class="bi bi-binoculars"></i> View</Link></td>
                 </tr>
               )))}

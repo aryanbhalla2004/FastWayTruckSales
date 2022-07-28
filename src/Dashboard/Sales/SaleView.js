@@ -72,10 +72,10 @@ const SaleView = () => {
           <div class="header-continer">
             <div class="content-sizing header-content-wrapper">
               <div class="company-info-top-left">
-                <p><i class="bi bi-geo-alt"></i> 2095 Logan Ave Winnipeg, MB R2R 0J1</p>
-                <p><i class="bi bi-telephone"></i> 204-615-1000</p>
-                <p><i class="bi bi-envelope"></i>mb@fastwaytruck.com</p>
-                <p><i class="bi bi-globe"></i> www.fastwaytrucksales.com</p>
+                <p className='print-heavy'><i class="bi bi-geo-alt"></i> 2095 Logan Ave Winnipeg, MB R2R 0J1</p>
+                <p className='print-heavy'><i class="bi bi-telephone"></i> 204-615-1000</p>
+                <p className='print-heavy'><i class="bi bi-envelope"></i>mb@fastwaytruck.com</p>
+                <p className='print-heavy'><i class="bi bi-globe"></i> www.fastwaytrucksales.com</p>
               </div>
               <img src={logo} width="120" className='logo-box'/>  
               <div className="dealer-invo">
@@ -134,7 +134,7 @@ const SaleView = () => {
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Odometer reading:</h3>
-                  <span className='pdf-edit-title-small'>{listing && listing.oReading} KM</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.oReading}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Color:</h3>

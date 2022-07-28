@@ -279,6 +279,7 @@
 .grid-box-dash {
   grid-gap: 20px;
   display: grid;
+  overflow-x: scroll;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 

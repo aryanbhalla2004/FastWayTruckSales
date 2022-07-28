@@ -30,6 +30,11 @@ export const print = () => {
    elem.style.fontWeight = "500";
   });
 
+  var smallerText = element.querySelectorAll(".print-heavy");
+  smallerText.forEach(elem => {
+   elem.style.fontWeight = "500";
+  });
+
   var smallerText = element.querySelectorAll(".pdf-edit-title");
   smallerText.forEach(elem => {
    elem.style.fontWeight = "500";

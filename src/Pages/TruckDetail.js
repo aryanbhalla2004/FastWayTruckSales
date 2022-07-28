@@ -134,13 +134,22 @@ const TruckDetail = (props) => {
               <li onClick={() => setCurrentImage(product.images.four)}>{product.images.four &&<img src={product.images.four} ></img>}</li> 
             </ul>
           </div>
-          
           <div className='single-box'>
             <div className='single-box-header'>
               <h2><i className="bi bi-grid-3x2-gap-fill"></i> Amenities</h2>
             </div>
             <ul className='flex list-of-amenities'>
               {product.amenities.map((item, index) => (<li key={index}><i class={`${item.icon}`}></i> {item.label}</li>))}
+            </ul>
+          </div>
+          <div className='single-box'>
+            <div className='single-box-header'>
+              <h2><i className="bi bi-card-checklist"></i> Product Inventory Info</h2>
+            </div>
+            <ul className='techincal-list flex fl-col'>
+              <li>Stock #: <span>{product.Stock ? product.Stock : "N/A"}</span></li>
+              <li>Price: <span>{product.Price ? "$ " + parseInt(product.Price).toFixed(2) : "Please Contact"}</span></li>
+              <li>Posted Date:<span>{product.Date ? product.Date : "N/A"}</span></li>
             </ul>
           </div>  
         </div>
@@ -161,13 +170,23 @@ const TruckDetail = (props) => {
               <li>Make <span>{product.TruckMake ? product.TruckMake : "N/A"}</span></li>
               <li>Model <span>{product.Model ? product.Model : "N/A"}</span></li>
               <li>Engine <span>{product.Engine ? product.Engine : "N/A"}</span></li>
+              <li>HP <span>{product.Hp ? product.Hp : "N/A"}</span></li>
+              <li>Front Axle <span>{product.FrontAxle ? product.FrontAxle : "N/A"}</span></li>
+              <li>Rear Axle <span>{product.RearAxle ? product.RearAxle : "N/A"}</span></li>
+              <li>Suspension <span>{product.Suspension ? product.Suspension : "N/A"}</span></li>
               <li>VIN <span>{product.Vin ? product.Vin : "N/A"}</span></li>
               <li>WheelBase <span>{product.WheelBase ? product.WheelBase : "N/A"}</span></li>
-              <li>Sleeper <span>{product.Sleeper ? product.Sleeper : "N/A"}</span></li>
+              <li>Sleeper Bed<span>{product.SleeperBed ? product.SleeperBed : "N/A"}</span></li>
               <li>Transmission <span>{product.Transmission ? product.Transmission : "N/A"}</span></li>
               <li>Ratio <span>{product.Ratio ? product.Ratio : "N/A"}</span></li>
               <li>Mileage <span>{product.Mileage ? product.Mileage : "N/A"} km</span></li>
               <li>Color <span>{product.Color ? product.Color : "N/A"}</span></li>
+              <li>Front Tire Size<span>{product.FrontTSize ? product.FrontTSize : "N/A"}</span></li>
+              <li>Front Rims <span>{product.FrontRims ? product.FrontRims : "N/A"}</span></li>
+              <li>Rear Tire Size <span>{product.RearTSize ? product.RearTSize : "N/A"}</span></li>
+              <li>Rear Rims <span>{product.RearRims ? product.RearRims : "N/A"} km</span></li>
+              <li>Fuel Tank Size <span>{product.FuelTankSize ? product.FuelTankSize : "N/A"}</span></li>
+              <li>Fifth Wheel <span>{product.FifthWheel ? product.FifthWheel : "N/A"}</span></li>
             </ul>
           </div>
         </div>

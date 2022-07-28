@@ -12,6 +12,7 @@ const TruckAdd = (props) => {
     two: false,
     three: false,
     four: false,
+    fifth: false,
   })
   const history = useNavigate();
   const [error, setError] = useState("");
@@ -28,13 +29,24 @@ const TruckAdd = (props) => {
     Transmission:"",
     Ratio:"",
     WheelBase:"",
-    Sleeper:"",
+    SleeperBed: "",
     amenities:[],
-    images: {one: '', two: '', three: '', four: ''},
+    Price: "",
+    BreakSystem: '',
+    images: {one: '', two: '', three: '', four: '', fifth: ''},
     description:"",
     Title:"",
+    Hp: '',
+    FrontAxle: '',
+    RearAxle: '',
+    Suspension: '',
+    FrontTSize: '',
+    RearTSize: '',
+    RearRims: '',
+    FrontRims: '',
+    FuelTankSize: '',
+    FifthWheel: '',
     Date: new Date().toLocaleDateString("en-US"),
-    Quantity:""
   });
   const [amen, setAmen] = useState([]);
 
@@ -238,8 +250,8 @@ const TruckAdd = (props) => {
       />
     </div>
     <div className="col">
-      <label className="form-label text-dark" htmlFor="c-name">Transmission</label
-      ><select
+      <label className="form-label text-dark" htmlFor="c-name">Transmission</label>
+      <select
         className="form-control form-control-md form-control-dark"
         id="transmission"
         name="Transmission"
@@ -276,14 +288,18 @@ const TruckAdd = (props) => {
       />
     </div>
     <div className="col">
-      <label className="form-label text-dark" htmlFor="c-name">Sleeper</label
-      ><input
+      <label className="form-label text-dark" htmlFor="c-name">Sleeper Bed</label
+      >
+      <select
         className="form-control form-control-md form-control-dark"
-        id="sleeper"
-        name="Sleeper"
-        type="text"
+        id="SleeperBed"
+        name="SleeperBed"
         onChange={updateUserInput}
-      />
+      >
+        <option value="" disabled selected>Select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
     </div>
     <div className="col">
       <div className="row">
@@ -315,16 +331,133 @@ const TruckAdd = (props) => {
 
     
     <div className="col">
-      <label className="form-label text-dark" htmlFor="c-name">Quantity</label
-      ><input
+      <label className="form-label text-dark" htmlFor="c-name">Break System</label
+      >
+      <select
         className="form-control form-control-md form-control-dark"
-        id="Quantity"
-        name="Quantity"
-        type="number"
+        id="BreakSystem"
+        name="BreakSystem"
         onChange={updateUserInput}
-      />
+      >
+        <option value="" disabled selected>Select</option>
+        <option value="Drum Break">Drum Break</option>
+        <option value="Disk Break">Disk Break</option>
+      </select>
     </div>
     </div>
+
+
+    <div className="row mt-3">
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">HP</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="Hp"
+          name="Hp"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Front Axle</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="FrontAxle"
+          name="FrontAxle"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Rear Axle</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="RearAxle"
+          name="RearAxle"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Suspension</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="Suspension"
+          name="Suspension"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+    </div>
+
+    <div className="row mt-3">
+    <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Front Tire Size </label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="FrontTSize"
+          name="FrontTSize"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Front Rims</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="FrontRims"
+          name="FrontRims"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Rear Tire Size</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="RearTSize"
+          name="RearTSize"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Rear Rims</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="RearRims"
+          name="RearRims"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+    </div>
+
+    <div className="row mt-3">
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Fuel Tank Size</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="FuelTankSize"
+          name="FuelTankSize"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+
+      <div className="col">
+        <label className="form-label text-dark" htmlFor="c-name">Fifth Wheel</label
+        ><input
+          className="form-control form-control-md form-control-dark"
+          id="FifthWheel"
+          name="FifthWheel"
+          type="text"
+          onChange={updateUserInput}
+        />
+      </div>
+    </div>
+
+
     <div className="row mt-3">
       <div className="col">
       <label className="form-label text-dark" htmlFor="c-name">Title</label
@@ -336,7 +469,16 @@ const TruckAdd = (props) => {
         onChange={updateUserInput}
       />
     </div>
-
+    <div className="col">
+      <label className="form-label text-dark" htmlFor="c-name">Price</label
+      ><input
+        className="form-control form-control-md form-control-dark"
+        id="Title"
+        name="Price"
+        type="number"
+        onChange={updateUserInput}
+      />
+    </div>
     </div>
     <div className="row mt-3">
       <div className="col">
@@ -377,6 +519,12 @@ const TruckAdd = (props) => {
         <div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.four})`}}>     
           <div>  
           {!loading.four ? <input type="file" onChange={(e) => handleImageUpload(e, "four")}/>   : <div class="spinner-border text-light" role="status"></div>}    
+          </div>                        
+        </div>
+
+        <div className="dz-message" style={{backgroundImage: `url(${userInput.images && userInput.images.fifth})`}}>     
+          <div>  
+          {!loading.fifth ? <input type="file" onChange={(e) => handleImageUpload(e, "fifth")}/>   : <div class="spinner-border text-light" role="status"></div>}    
           </div>                        
         </div>
       </section>
