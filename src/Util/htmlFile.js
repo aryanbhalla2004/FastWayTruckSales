@@ -2,11 +2,14 @@ import html2pdf from "html2pdf.js";
 
 var opt = {
   margin: 0,
-  filename: "myfile.pdf",
-  html2canvas: { dpi: 192,
+  filename: "FastWayTruckSales.pdf",
+  html2canvas: { 
+    dpi: 192,
     scale:4,
     letterRendering: true,
-    useCORS: true},
+    useCORS: true,
+    scrollY: 0
+  },
   jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
 };
 
@@ -22,8 +25,9 @@ export const print = () => {
     elem.style.fontSize = ".8rem";
   });
 
-  element.querySelector(".logo-box").style.width = "220px";
-
+  element.querySelector(".logo-box").style.width = "300px";
+  element.querySelector(".logo-box").style.marginLeft = "20px";
+  element.querySelector(".logo-box").style.marginTop = "20px";
   var smallerText = element.querySelectorAll(".pdf-edit-title-small");
   smallerText.forEach(elem => {
    elem.style.fontSize = ".7rem";
