@@ -22,7 +22,7 @@ export const print = () => {
     elem.style.fontSize = ".8rem";
   });
 
-  element.querySelector(".logo-box").style.width = "100px";
+  element.querySelector(".logo-box").style.width = "220px";
 
   var smallerText = element.querySelectorAll(".pdf-edit-title-small");
   smallerText.forEach(elem => {

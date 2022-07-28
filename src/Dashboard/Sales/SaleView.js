@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import {firebase} from "../../Util/Firebase";
 import { renderToString } from "react-dom/server";
 import "./Sales.css";
-import logo from "../../Util/Images/logo.jpg";
+import logo from "../../Util/Images/billofsale.jpg";
 import { print } from '../../Util/htmlFile';
 
 const SaleView = () => {
@@ -77,10 +77,10 @@ const SaleView = () => {
                 <p className='print-heavy'><i class="bi bi-envelope"></i>mb@fastwaytruck.com</p>
                 <p className='print-heavy'><i class="bi bi-globe"></i> www.fastwaytrucksales.com</p>
               </div>
-              <img src={logo} width="120" className='logo-box'/>  
+              <img src={logo} width="400" className='logo-box'/>  
               <div className="dealer-invo">
                 <h2>Dealer No: <span>5661</span></h2>
-              <h2>Invoice No: <span>{listing && listing.invoice}</span></h2>
+                <h2>Invoice No: <span>{listing && listing.invoice}</span></h2>
               </div>
             </div>
           </div>

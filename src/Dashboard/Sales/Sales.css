@@ -30,7 +30,7 @@
 }
 
 .header-content-wrapper > img {
-  width: 130px;
+  width: 300px;
 }
 
 .company-info-top-left {
@@ -347,4 +347,21 @@
 
 .pdf-file-download {
   background-color: #fff;
+}
+
+.dealer-invo {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+}
+
+.dealer-invo > h2 {
+  color: rgb(202, 33, 33);
+  display: flex;
+  gap: 5px;
+}
+
+.dealer-invo > h2 > span {
+  color: #000;
 }
