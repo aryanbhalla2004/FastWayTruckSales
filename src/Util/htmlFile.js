@@ -20,13 +20,14 @@ export const print = () => {
   element.classList.remove("mt-5");
   var user = element.querySelector(".company-info-top-left");
   user.style.transform = "scale(.8)";
+  user.style.marginLeft = "-20px";
   var title = element.querySelectorAll(".pdf-edit-title");
   title.forEach(elem => {
     elem.style.fontSize = ".8rem";
   });
 
   element.querySelector(".logo-box").style.width = "300px";
-  element.querySelector(".logo-box").style.marginLeft = "20px";
+  //element.querySelector(".logo-box").style.marginLeft = "-20px";
   element.querySelector(".logo-box").style.marginTop = "20px";
   var smallerText = element.querySelectorAll(".pdf-edit-title-small");
   smallerText.forEach(elem => {
