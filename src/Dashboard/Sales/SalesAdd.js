@@ -145,7 +145,7 @@ const SalesAdd = (props) => {
           </div>
           <div className="row mt-3">
             <div className="col">
-              <label className="form-label text-dark" htmlFor="c-name">Odometer Reading<span>*</span></label>
+              <label className="form-label text-dark" htmlFor="c-name">Odometer-hours Reading<span>*</span></label>
               <input className="form-control form-control-md form-control-dark" id="oReading" name="oReading" type="text" onChange={updateUserInput}/>
             </div>
             <div className="col">

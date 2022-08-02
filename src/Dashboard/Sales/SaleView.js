@@ -133,7 +133,7 @@ const SaleView = () => {
                   <span className='pdf-edit-title-small'>{listing && listing.model}</span>
                 </li>
                 <li>
-                  <h3 className='pdf-edit-title'>Odometer reading:</h3>
+                  <h3 className='pdf-edit-title'>Odometer-hours reading:</h3>
                   <span className='pdf-edit-title-small'>{listing && listing.oReading}</span>
                 </li>
                 <li>
