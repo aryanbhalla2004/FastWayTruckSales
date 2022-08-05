@@ -1046,3 +1046,52 @@ label.checkbox span {
   height: 500px;
   border: 1px solid #a9a9a9;
 }
+
+@media only screen and (max-width: 1250px)  {
+  .sec-response{
+    overflow-x:scroll;
+  }
+
+}
+
+@media only screen and (max-width: 1100px) {
+  .flex-row{
+    flex-direction:column !important;
+    gap: 20px;
+  }
+  .side-bar-menu li a{
+    display: none !important;
+  }
+  .logo-welcome img{
+    width: 80%;
+  }
+  .side-bar-menu p {
+    display: none;
+  }
+  .side-bar-menu{
+    max-width: 100px !important;
+  }
+  .nav li{
+    justify-content: center;
+  }
+  .contain-col span {
+    display: none;
+  }
+  .logout-user-info span{
+    display: none !important;
+  }
+  .logout-user-info{
+    justify-content: center !important;
+  }
+
+  .right-side-content{
+    padding-left: 101px !important;
+  }
+}
+
+@media only screen and (max-width: 750px)  {
+  .flex-row{
+    flex-direction:column !important;
+    gap: 20px;
+  }
+}
