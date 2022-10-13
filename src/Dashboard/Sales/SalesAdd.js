@@ -35,7 +35,9 @@ const SalesAdd = (props) => {
     Vin: "",
     textbox: "",
     salesRep: "",
-    pst: true,
+    pst: false,
+    gst: false,
+    hst: false,
     status:"",
     re:"",
     invoice:(parseInt(props.ExtraInfo.data.totalInvoice) + 1)
@@ -224,6 +226,22 @@ const SalesAdd = (props) => {
               <label className="form-label text-dark" htmlFor="c-name">P.S.T Cost<span>*</span></label>
               <select className="form-control form-control-md form-control-dark" id="type" name="pst" required onChange={updateUserInput}>
                 <option value="" disabled selected >Select</option>
+                <option value="true">Applied</option>
+                <option value="false">Not Applied</option>
+              </select>
+            </div>
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">G.S.T Cost<span>*</span></label>
+              <select className="form-control form-control-md form-control-dark" id="type" name="gst" required onChange={updateUserInput}>
+                <option value="" disabled selected >Select</option>
+                <option value="true">Applied</option>
+                <option value="false">Not Applied</option>
+              </select>
+            </div>
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">H.S.T Cost<span>*</span></label>
+              <select className="form-control form-control-md form-control-dark" id="type" name="hst" required onChange={updateUserInput}>
+                <option value="" disabled selected>Select</option>
                 <option value="true">Applied</option>
                 <option value="false">Not Applied</option>
               </select>
