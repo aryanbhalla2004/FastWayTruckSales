@@ -48,7 +48,7 @@ const SalesEdit = (props) => {
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Date<span></span></label>
-              <input value={userInput.fName} className="form-control form-control-md form-control-dark" id="fName" name="date" type="text" disabled value={userInput.date} onChange={updateUserInput} />
+              <input value={userInput.fName} className="form-control form-control-md form-control-dark" id="fName" name="date" type="text"  value={userInput.date} onChange={updateUserInput} />
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">I/We:<span>*</span></label>

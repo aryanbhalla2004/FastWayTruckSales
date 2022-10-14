@@ -36,8 +36,6 @@ const SalesAdd = (props) => {
     textbox: "",
     salesRep: "",
     pst: false,
-    gst: false,
-    hst: false,
     status:"",
     re:"",
     invoice:(parseInt(props.ExtraInfo.data.totalInvoice) + 1)
@@ -79,7 +77,7 @@ const SalesAdd = (props) => {
       <div className='content-sizing-db wrapper-db-content'>
         <div className='header-and-create-button'>
           <h3>Create New Sales</h3>
-          <Link to="/dashboard/trucks" className="btn-general primary-btn"><i className="bi bi-arrow-left"></i> Back</Link>
+          <Link to="/dashboard/sales" className="btn-general primary-btn"><i className="bi bi-arrow-left"></i> Back</Link>
         </div>
         <form onSubmit={onSubmit} className="card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
           <div className="row form-row d-flex">
@@ -89,7 +87,7 @@ const SalesAdd = (props) => {
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Date<span></span></label>
-              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="text" disabled value={userInput.date} onChange={updateUserInput} />
+              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="text" value={userInput.date} onChange={updateUserInput} />
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">I/We:<span>*</span></label>
@@ -226,22 +224,6 @@ const SalesAdd = (props) => {
               <label className="form-label text-dark" htmlFor="c-name">P.S.T Cost<span>*</span></label>
               <select className="form-control form-control-md form-control-dark" id="type" name="pst" required onChange={updateUserInput}>
                 <option value="" disabled selected >Select</option>
-                <option value="true">Applied</option>
-                <option value="false">Not Applied</option>
-              </select>
-            </div>
-            <div className="col">
-              <label className="form-label text-dark" htmlFor="c-name">G.S.T Cost<span>*</span></label>
-              <select className="form-control form-control-md form-control-dark" id="type" name="gst" required onChange={updateUserInput}>
-                <option value="" disabled selected >Select</option>
-                <option value="true">Applied</option>
-                <option value="false">Not Applied</option>
-              </select>
-            </div>
-            <div className="col">
-              <label className="form-label text-dark" htmlFor="c-name">H.S.T Cost<span>*</span></label>
-              <select className="form-control form-control-md form-control-dark" id="type" name="hst" required onChange={updateUserInput}>
-                <option value="" disabled selected>Select</option>
                 <option value="true">Applied</option>
                 <option value="false">Not Applied</option>
               </select>

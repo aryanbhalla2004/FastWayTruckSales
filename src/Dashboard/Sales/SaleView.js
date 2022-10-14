@@ -22,7 +22,7 @@ const SaleView = () => {
     });
   }
 
-  const getTotal = (gst, pst, hst) => {
+  const getTotal = (gst, pst) => {
     //! total value before taxes (product + warranty + admin fee)
     let totalValue = listing && (parseInt(listing.amm) + parseInt(listing.warranty) + listing.adminFee);
     //! Total GST tax on total value
@@ -38,10 +38,6 @@ const SaleView = () => {
     if(pst && listing.pst === "true")
       totalValue += pstCost
 
-    if(hst && listing.hst === "true") {
-      totalValue += hstCost
-    }
-
     return totalValue.toFixed(2);
   }
 
@@ -55,12 +51,6 @@ const SaleView = () => {
     let totalValue = listing && (parseInt(listing.amm) + parseInt(listing.warranty) + listing.adminFee);
 
     return totalValue * 0.07
-  }
-
-  const getHst = () => {
-    let totalValue = listing && (parseInt(listing.amm) + parseInt(listing.warranty) + listing.adminFee);
-
-    return totalValue * 0.13
   }
 
   const GenerateFile = () => {
@@ -240,19 +230,15 @@ const SaleView = () => {
                 <ul class="total-price">
                   <li>
                     <h3 className='pdf-edit-title-small'>Sub-total (Including GST):</h3>
-                     <span className='pdf-edit-title'>$ {listing && getTotal(true, false, false)}</span>
+                     <span className='pdf-edit-title'>$ {listing && getTotal(true, false)}</span>
                   </li>
                   <li>
                     <h3 className='pdf-edit-title-small'>P.S.T (PST# 139101-0):</h3>
                     <span className='pdf-edit-title'>$ {listing && listing.pst === "true" ? getPst().toFixed(2) : "0.00"}</span>
                   </li>
                   <li>
-                    <h3 className='pdf-edit-title-small'>H.S.T :</h3>
-                    <span className='pdf-edit-title'>$ {listing && listing.hst === "true" ? getHst().toFixed(2) : "0.00"}</span>
-                  </li>
-                  <li>
-                    <h3 className='pdf-edit-title-small'>Sub-Total (incl GST+PST+HST):</h3>
-                    <span className='pdf-edit-title'>$ {listing && getTotal(true, true, true)}</span>
+                    <h3 className='pdf-edit-title-small'>Sub-Total (incl GST+PST):</h3>
+                    <span className='pdf-edit-title'>$ {listing && getTotal(true, true)}</span>
                   </li>
                   <li>
                     <h3 className='pdf-edit-title-small'>Deposit:</h3>
@@ -260,11 +246,11 @@ const SaleView = () => {
                   </li>
                   <li>
                     <h3 className='pdf-edit-title-small'>Balance:</h3>
-                    <span className='pdf-edit-title'>$ {listing && (getTotal(true, true, true) - parseInt(listing.deposit)).toFixed(2)}</span>
+                    <span className='pdf-edit-title'>$ {listing && (getTotal(true, true) - parseInt(listing.deposit)).toFixed(2)}</span>
                   </li>
                   <li>
                     <h2 className='pdf-edit-title'>Total:</h2>
-                    <span className='pdf-edit-title'>$ {listing && getTotal(true, true, true)}</span>
+                    <span className='pdf-edit-title'>$ {listing && getTotal(true, true)}</span>
                   </li>
                 </ul>
               </div>
