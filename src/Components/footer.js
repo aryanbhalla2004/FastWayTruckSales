@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="about-footer flex fl-col">
             <h2 className="primary-color">Office: Winnipeg</h2>
             <ul className="services-list-footer contact-fix">
-              <li><i className="bi bi-envelope-fill"></i> mb@fastwaytruck.com</li>
+              <li><i className="bi bi-envelope-fill"></i> mb@fastwaytrucks.com</li>
               <li><i className="bi bi-telephone-fill"></i> +1 (204)-615-1000</li>
               <li><i className="bi bi-geo-alt-fill"></i> 2095 Logan Ave, Winnipeg MB, Canada</li>
             </ul>
