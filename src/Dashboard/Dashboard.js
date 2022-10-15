@@ -11,6 +11,20 @@ const Dashboard = (props) => {
   const [logoutBox, setLogoutBox] = useState(false);
   const [deleteBox, setDeleteBox] = useState(false);
   const [deleteId, setDeleteId] = useState();
+
+  function download(filename) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(props.SalesPost)));
+    element.setAttribute('download', filename);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
+  }
+
   return (
     <>
      {deleteBox && <Delete deleteId={deleteId} del={props.del} setDeleteBox={setDeleteBox}/>}
@@ -41,6 +55,7 @@ const Dashboard = (props) => {
               <span>Sales</span>
               <ul className='nav'>
                 <li onClick={() => history("/dashboard/sales")}><i class="bi bi-cash"></i><Link to="/dashboard/sales">Bill of Sales</Link></li>
+                <li onClick={() => download("backup.json")}><i class="bi bi-layer-backward"></i><Link to="/dashboard/sales">Backup Sales</Link></li>
               </ul>
             </div>
           </div>

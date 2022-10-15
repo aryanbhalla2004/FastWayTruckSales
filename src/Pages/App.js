@@ -25,6 +25,7 @@ const App = () => {
 
     return unsubscribe;
   }, []);
+
   useEffect(() => {
     db.collection("Sales").onSnapshot((querySnapshot) => {
       let tempList = [];
@@ -39,6 +40,7 @@ const App = () => {
     console.log("login");
     return auth.signInWithEmailAndPassword(email, password);
   };
+  
   const logout = () => {
     
     auth
@@ -85,8 +87,8 @@ const App = () => {
       <Routes>
         <Route path="login" element={currentUser ? <Navigate to="/dashboard" /> : <LogIn login={login}/>} />
         <Route path="/" element={currentUser ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}/>
-        <Route path="dashboard" element={currentUser ? <Home currentUser logout={logout}/> : <Navigate to="/login" />}>
-          <Route index element={currentUser ? <Dashboard currentUser logout={logout}/> : <Navigate to="/login" />}/>
+        <Route path="dashboard" element={currentUser ? <Home currentUser logout={logout} sales={sales}/> : <Navigate to="/login" />}>
+          <Route index element={currentUser ? <Dashboard currentUser logout={logout} sales={sales}/> : <Navigate to="/login" />}/>
           <Route path="sales"element={currentUser ? <Sales  del={del} sales={sales}/> : <Navigate to="/login" />} />
           <Route path="sales/add"  element={currentUser ? <SalesAdd add={add}/> : <Navigate to="/login" />}/>
           <Route path="sales/edit/:id" element={currentUser ? <SalesEdit edit={edit} sales={sales}/> : <Navigate to="/login" />}/>

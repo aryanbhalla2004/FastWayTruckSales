@@ -177,7 +177,7 @@ const App = () => {
     {!loading ?
     <AnimatePresence>
       <Routes>
-        <Route path="dashboard" element={currentUser ? <Dashboard del={del} getData={getData} add={add} edit={edit} currentUser={currentUser} logout={logout}/> : <Navigate to="/login"/>}>
+        <Route path="dashboard" element={currentUser ? <Dashboard del={del} getData={getData} add={add} edit={edit} currentUser={currentUser} logout={logout} SalesPost={SalesPost}/> : <Navigate to="/login"/>}>
           <Route index element={<DashboardHome trucks={trucks} trailers={trailers} TruckPost={TruckPost} SalesPost={SalesPost} Inquires={Inquires}/>}/>
           //! Trucks
           <Route path="trucks" element={<DashboardTruck getData={getData} del={del}/>}/>
