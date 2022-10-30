@@ -175,10 +175,13 @@
   width: 100%;
 }
 
+.company-table > tbody > tr, .company-table > thead{
+  grid-template-columns: .9fr 3fr 1fr 1.6fr;
+}
+
 .activity-table > tbody > tr > td, .activity-table > thead > th {
   width: 100%;
 }
-
 
 
 .activity-table > tbody > tr > td  {

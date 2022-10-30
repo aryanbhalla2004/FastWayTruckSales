@@ -54,6 +54,7 @@ const Dashboard = (props) => {
             <div className='contain-col'>
               <span>Sales</span>
               <ul className='nav'>
+                <li onClick={() => history("/dashboard/company")}><i class="bi bi-building"></i><Link to="/dashboard/sales">Companies</Link></li>
                 <li onClick={() => history("/dashboard/sales")}><i class="bi bi-cash"></i><Link to="/dashboard/sales">Bill of Sales</Link></li>
                 <li onClick={() => download("backup.json")}><i class="bi bi-layer-backward"></i><Link to="/dashboard/sales">Backup Sales</Link></li>
               </ul>

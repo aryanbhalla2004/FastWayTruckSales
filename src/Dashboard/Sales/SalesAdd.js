@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {Link} from 'react-router-dom';
 import { useNavigate, useParams } from "react-router-dom";
 import Select from 'react-select';
 import TruckOptions from "../../Util/options.js"
 import { Editor } from "react-draft-wysiwyg";
+import 'react-select-search/style.css'
+import SelectSearch from 'react-select-search';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const SalesAdd = (props) => {
-  console.log(props.ExtraInfo.data.totalInvoice);
+  const ref = useRef(null);
+  const [showSearch, setShowSearch] = useState(false);
   const history = useNavigate();
   const [error, setError] = useState("");
+  const [disableRecommend, setDisableRecommend] = useState(false);
   const [userInput, setUserInput] = useState({
     email:"",
     re: "",
@@ -53,25 +57,75 @@ const SalesAdd = (props) => {
 
     var item = userInput;
     updateInvoice();
+
     try{
       let userDetails = await props.add("Sales",item);
       history('/dashboard/sales');
-    }
-    catch(e){
+    } catch(e){
       setError(e.message);
     }
   }
 
   const updateInvoice = async(e) => {
-    console.log(props.ExtraInfo);
     var item = { totalInvoice: userInput.invoice};
-    try{
+
+    try {
       let d = await props.edit(item,"ExtraInfo",props.ExtraInfo.id);
-    }
-    catch(e){
+    } catch(e){
       setError(e.message);
     }
   }
+
+  const hideBox = () => {
+    
+    const findItem = props.CompaniesList.find(item => item.data.iwe.toLowerCase().includes(userInput.iwe.toLowerCase()));
+
+    if(findItem === undefined) {
+     setShowSearch(false);
+    }
+  }
+
+  const checkForCompanyName = (e) => {
+    setShowSearch(true);
+
+    if(e.code === "Enter") {
+      const currentUserValue  = e.target.value;
+      const findItems = props.CompaniesList && props.CompaniesList.filter(item => item.data.iwe.toLowerCase().includes(currentUserValue.toLowerCase()));
+      if(findItems.length === 1) {
+        setShowSearch(false);
+        setUserInput(prevInput => ({
+          ...prevInput, iwe: findItems[0].data.iwe, 
+          address: findItems[0].data.address, 
+          re: findItems[0].data.re, 
+          state: findItems[0].data.state, 
+          city: findItems[0].data.city, 
+          email: findItems[0].data.email,
+          pCode: findItems[0].data.pCode,
+          phone: findItems[0].data.phone,
+          puchaserGst: findItems[0].data.puchaserGst,
+        }));
+      }
+    }
+  }
+
+  const selectCompany = (company) => {
+    console.log(company);
+    setUserInput(prevInput => ({
+      ...prevInput, iwe: company.iwe, 
+      address: company.address, 
+      re: company.re, 
+      state: company.state, 
+      city: company.city, 
+      email: company.email,
+      pCode: company.pCode,
+      phone: company.phone,
+      puchaserGst: company.puchaserGst,
+    }));
+
+    setShowSearch(false);
+  }
+
+
   return (
     <div className='header-content-right-page'>
       <div className='content-sizing-db wrapper-db-content'>
@@ -82,48 +136,60 @@ const SalesAdd = (props) => {
         <form onSubmit={onSubmit} className="card card-light card-body border-0 shadow-sm p-4 mt-5" id="basic-info">
           <div className="row form-row d-flex">
             <h2 className="h4 mb-2">Sales Details</h2>
-            <button type="submit" onClick={onSubmit}className="btn-general primary-btn blue mb-2" href="/dashboard/trucks"> Submit</button>
+            <button type="submit" className="btn-general primary-btn blue mb-2"> Submit</button>
           </div>
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Date<span></span></label>
-              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="text" value={userInput.date} onChange={updateUserInput} />
+              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="date" value={userInput.date} onChange={updateUserInput} />
             </div>
-            <div className="col">
+            <div className="col companie-selection-container-field" >
               <label className="form-label text-dark" htmlFor="c-name">I/We:<span>*</span></label>
-              <input className="form-control form-control-md form-control-dark" id="dealorNum" name="iwe" value={userInput.iwe} type="text" onChange={updateUserInput}/>
+              <input className="form-control form-control-md form-control-dark" id="dealorNum" name="iwe" onBlur={hideBox} onKeyDown={checkForCompanyName} value={userInput.iwe}  type="text" onChange={updateUserInput} autoComplete="off"/>
+              {showSearch && userInput.iwe.length > 0 && props.CompaniesList.length > 0 && <div className="companies-selection">
+                <ul>
+                {
+                  props.CompaniesList && props.CompaniesList.filter(item => item.data.iwe.toLowerCase().includes(userInput.iwe.toLowerCase())).map((item, index) => (
+                    <li  onClick={() => selectCompany(item.data)}>{item.data.iwe}</li>
+                  ))
+                }
+
+                {props.CompaniesList && props.CompaniesList.filter(item => item.data.iwe.toLowerCase().includes(userInput.iwe.toLowerCase())).length <= 0 && <li>No Companies Found</li>}
+                
+                </ul>
+              </div>}
             </div>
           </div>
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Address<span>*</span></label>
-              <input className="form-control form-control-md form-control-dark" id="address" name="address" type="address" onChange={updateUserInput}/>
+              <input className="form-control form-control-md form-control-dark" id="address" name="address" value={userInput.address} type="address" onChange={updateUserInput}/>
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">City<span>*</span></label>
-              <input className="form-control form-control-md form-control-dark" id="city" name="city" type="city" onChange={updateUserInput} />
+              <input className="form-control form-control-md form-control-dark" id="city" name="city" type="city" value={userInput.city} onChange={updateUserInput} />
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">State<span>*</span></label> 
-              <input className="form-control form-control-md form-control-dark" id="state" name="state" type="state" onChange={updateUserInput}/>
+              <input className="form-control form-control-md form-control-dark" id="state" name="state" type="state" value={userInput.state} onChange={updateUserInput}/>
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Postal Code<span>*</span></label>
-              <input className="form-control form-control-md form-control-dark" id="pCode" name="pCode" type="pCode" onChange={updateUserInput}/>
+              <input className="form-control form-control-md form-control-dark" id="pCode" name="pCode" type="pCode" value={userInput.pCode} onChange={updateUserInput}/>
             </div>
           </div>
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Phone Number<span>*</span></label> 
-              <input className="form-control form-control-md form-control-dark" id="phone" name="phone" type="tel" onChange={updateUserInput} />
+              <input className="form-control form-control-md form-control-dark" id="phone" name="phone" type="tel" value={userInput.phone} onChange={updateUserInput} />
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Email Address<span>*</span></label>
-              <input className="form-control form-control-md form-control-dark" id="phone" name="email" type="email" onChange={updateUserInput}/>
+              <input className="form-control form-control-md form-control-dark" id="phone" name="email" type="email" value={userInput.email} onChange={updateUserInput}/>
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Re:<span>*</span></label>
-              <input className="form-control form-control-md form-control-dark" id="re" name="re" type="text" onChange={updateUserInput}/>
+              <input className="form-control form-control-md form-control-dark" id="re" name="re" type="text" value={userInput.re} onChange={updateUserInput}/>
             </div>
           </div>
           <div className="row form-row">

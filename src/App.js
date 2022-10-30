@@ -25,6 +25,7 @@ import {Trailers as DashboardTrailers} from './Dashboard/Trailers/Trailer';
 import {Inquires as DashboardInquires} from './Dashboard/ProductInquries/Inquires';
 import {NewListings as DashboardListings} from './Dashboard/NewListings/NewListings';
 import {Sales as DashboardSales} from './Dashboard/Sales/Sales';
+import { Company as DashboardCompany } from './Dashboard/Companies/Company';
 import SaleView from './Dashboard/Sales/SaleView';
 import SalesAdd from './Dashboard/Sales/SalesAdd';
 import SalesEdit from './Dashboard/Sales/SalesEdit';
@@ -37,6 +38,9 @@ import TruckView from './Dashboard/Trucks/TruckView';
 import TruckAdd from './Dashboard/Trucks/TruckAdd';
 import TruckEdit from './Dashboard/Trucks/TruckEdit';
 import DashboardHome from './Dashboard/DashboardHome';
+import CompanyAdd from './Dashboard/Companies/CompanyAdd';
+import CompaniesView from './Dashboard/Companies/CompanyView';
+import CompanyEdit from './Dashboard/Companies/CompanyEdit';
 const App = () => {
   const history = useNavigate();
   const [currentUser, setCurrentUser] = useState();
@@ -48,6 +52,7 @@ const App = () => {
   const [TruckPost, setTruckPost] = useState();
   const [SalesPost, setSalesPost] = useState();
   const [ExtraInfo, setExtraInfo] = useState();
+  const [CompaniesList, setCompaniesList] = useState();
   useEffect(() => {
     db.collection("TruckPost").onSnapshot((querySnapshot) => {
       let tempList = [];
@@ -57,6 +62,7 @@ const App = () => {
       setTruckPost(tempList);
     });
   }, [])
+
   useEffect(() => {
     db.collection("ExtraInfo").onSnapshot((querySnapshot) => {
       let tempList = [];
@@ -66,6 +72,7 @@ const App = () => {
       setExtraInfo(tempList[0]);
     });
   }, [])
+
   useEffect(() => {
     db.collection("Sales").onSnapshot((querySnapshot) => {
       let tempList = [];
@@ -75,6 +82,17 @@ const App = () => {
       setSalesPost(tempList);
     });
   }, [])
+
+  useEffect(() => {
+    db.collection("Companies").onSnapshot((querySnapshot) => {
+      let tempList = [];
+      querySnapshot.forEach((doc) => {
+        tempList.push({data: doc.data(),id : doc.id});
+      });
+      setCompaniesList(tempList);
+    });
+  }, [])
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
         setCurrentUser(user);
@@ -198,10 +216,16 @@ const App = () => {
           <Route path="new-listing/:id" element={<NewListingView TruckPost={TruckPost} getData={getData}  edit={edit} del={del}/>}/>
 
           //! Bill of Sales
-          <Route path="sales" element={<DashboardSales getData={getData} del={del}/>} />
+          <Route path="sales" element={<DashboardSales getData={getData} del={del} add={add}/>} />
           <Route path="sales/:id" element={<SaleView getData={getData} del={del}/>}/>
-          <Route path="sales/add"  element={<SalesAdd ExtraInfo={ExtraInfo} SalesPost={SalesPost} edit={edit} add={add}/>}/>
+          <Route path="sales/add"  element={<SalesAdd ExtraInfo={ExtraInfo} SalesPost={SalesPost} edit={edit} add={add} CompaniesList={CompaniesList}/>}/>
           <Route path="sales/edit/:id"  element={<SalesEdit  SalesPost={SalesPost} getData={getData} edit={edit}/>}/>
+
+          //! Companie Data
+          <Route path="company" element={<DashboardCompany getData={getData} del={del}/>} />
+          <Route path="company/:id" element={<CompaniesView getData={getData} del={del} CompaniesList={CompaniesList}/>}/>
+          <Route path="company/add"  element={<CompanyAdd ExtraInfo={ExtraInfo} SalesPost={SalesPost} edit={edit} add={add} CompaniesList={CompaniesList}/>}/>
+          <Route path="company/edit/:id"  element={<CompanyEdit  CompaniesList={CompaniesList} getData={getData} edit={edit}/>}/>
         </Route>
 
         <Route path="/" element={<LandingPage setPage={setPage} setLoading={setLoading} page={page}/>}>

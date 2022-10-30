@@ -365,3 +365,63 @@
 .dealer-invo > h2 > span {
   color: #000;
 }
+
+.companie-selection-container-field {
+  position: relative;
+}
+
+.companies-selection {
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  width: 94.5%;
+  overflow-y: scroll;
+  max-height: 500px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 3px;
+  background-color: #fff;
+  z-index: 100;
+  position: absolute;
+}
+
+.companies-selection > ul {
+  list-style-type: none;
+}
+
+.companies-selection > ul > li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.companies-selection > ul > li:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.flex-3-group {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.flex-3-group-fd {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.flex-3-group-fd > li {
+  padding: 10px;
+  flex-direction: column;
+  display: flex;
+  border: 1px solid #ddd;
+  gap: 10px;
+  width: 32.3%;
+  font-weight: 300;
+}
+
+.flex-3-group-fd > li > strong {
+  font-size: 15px;
+  font-weight: 500;
+}

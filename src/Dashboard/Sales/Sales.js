@@ -31,11 +31,52 @@ export const Sales = (props) => {
     setSearch(e.target.value);
   }
 
+  //! Add exiting companies from bill of sales
+  const addAllComapanies = async () => {
+    const tempArray = []
+    for(let i = 0; i < sales.length; i++ ) {
+      const findItem = tempArray.find(item => item.iwe.toLowerCase() === sales[i].iwe.toLowerCase());
+      if(findItem === undefined) {
+        
+        tempArray.push({
+          address: sales[i].address,
+          puchaserGst: sales[i].puchaserGst,
+          city: sales[i].city,
+          state: sales[i].state,
+          email: sales[i].email,
+          iwe: sales[i].iwe,
+          date: sales[i].date,
+          phone: sales[i].phone,
+        })
+
+        //! If you wanna add more field in firebase or store data put object and key in tempItem
+        const tempItem = {
+          address: sales[i].address,
+          puchaserGst: sales[i].puchaserGst,
+          city: sales[i].city,
+          state: sales[i].state,
+          email: sales[i].email,
+          iwe: sales[i].iwe,
+          re: sales[i].re,
+          pCode: sales[i].pCode,
+          date: sales[i].date,
+          phone: sales[i].phone,
+        }; 
+
+        let userDetails = await props.add("Companies",tempItem);
+      }
+
+      
+    }
+    
+  }
+
   return (
     <div className='header-content-right-page'>
       <div className='content-sizing-db wrapper-db-content'>
         <div className='header-and-create-button'>
           <h3>Bill of Sales</h3>
+          {/* <button onClick={addAllComapanies}>All Companies</button> */}
           <div className='search-bar'>
             <input placeholder='Search Product' value={search} onChange={updateUserInput}/>
             <i class="bi bi-search"></i>
@@ -52,7 +93,7 @@ export const Sales = (props) => {
               <th></th>
             </thead>
             <tbody>
-              {!loading && (sales && sales.filter(item => item.re.toLowerCase().includes(search) || item.email.toLowerCase().includes(search) || item.invoice === parseInt(search)).map((item, index) => (
+              {!loading && (sales && sales.filter(item => item.re.toLowerCase().includes(search.toLowerCase()) || item.email.toLowerCase().includes(search.toLowerCase()) || item.invoice === parseInt(search.toLowerCase())).map((item, index) => (
                 <tr key={index}>
                   <td>
                     {item.invoice}
@@ -61,6 +102,7 @@ export const Sales = (props) => {
                   <td>
                     {item.status === "Pending" && <div className='new-item'>Pending</div>}  
                     {item.status === "Done" && <div className='old-item'>Done</div>}
+                    {item.status === "" && <div className='old-item'>N/A</div>}
                   </td>
                   <td>{item.date}</td>
                   <td><a href="#" className="btn-danger delete-button-table" onClick={() => {setDeleteBox(true); setDeleteId({...item, type: "Sales"})}}><i class="bi bi-trash3"></i> Delete</a><Link className=" edit-button" to={`/dashboard/sales/${item.id}`}><i class="bi bi-binoculars"></i> View</Link></td>
