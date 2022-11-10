@@ -17,7 +17,7 @@ export const print = () => {
   var element = document.querySelector(".pdf-file-download").cloneNode(true);
   element.style.transform = "translateY(-30px)";
   element.classList.remove("shadow-sm");
-  element.classList.remove("mt-5");
+  element.classList.remove("mt-6");
   var user = element.querySelector(".company-info-top-left");
   user.style.transform = "scale(.8)";
   user.style.marginLeft = "-20px";
@@ -40,9 +40,11 @@ export const print = () => {
    elem.style.fontWeight = "500";
   });
 
+
+
   var smallerText = element.querySelectorAll(".pdf-edit-title");
   smallerText.forEach(elem => {
-   elem.style.fontWeight = "500";
+   elem.style.fontWeight = "600";
   });
 
   element.querySelectorAll('.light-pd').forEach(elm => {

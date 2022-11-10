@@ -10,7 +10,7 @@
   width: 100%;
   border-right: 1px solid #e9e9ef;
   position: fixed;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .contain-col {

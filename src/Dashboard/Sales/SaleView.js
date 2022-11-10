@@ -76,7 +76,7 @@ const SaleView = () => {
               <div class="company-info-top-left">
                 <p className='print-heavy'><i class="bi bi-geo-alt"></i> 2095 Logan Ave Winnipeg, MB R2R 0J1</p>
                 <p className='print-heavy'><i class="bi bi-telephone"></i> 204-615-1000</p>
-                <p className='print-heavy'><i class="bi bi-envelope"></i>mb@fastwaytruck.com</p>
+                <p className='print-heavy'><i class="bi bi-envelope"></i>mb@fastwaytrucks.com</p>
                 <p className='print-heavy'><i class="bi bi-globe"></i> www.fastwaytrucksales.com</p>
               </div>
               <img src={logo} width="400" className='logo-box'/>  
