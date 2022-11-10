@@ -106,7 +106,7 @@ const SaleView = () => {
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Address:</h3>
-                  <span className='pdf-edit-title'>{listing && listing.address} {listing && listing.city} {listing && listing.state} {listing && listing.pCode}</span>
+                  <span className='pdf-edit-title-small'>{listing && listing.address} {listing && listing.city} {listing && listing.state} {listing && listing.pCode}</span>
                 </li>
                 <li>
                   <h3 className='pdf-edit-title'>Email Address (end customer):</h3>

@@ -10,14 +10,14 @@ var opt = {
     useCORS: true,
     scrollY: 0
   },
-  jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+  jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
 };
 
 export const print = () => {
   var element = document.querySelector(".pdf-file-download").cloneNode(true);
-  element.style.transform = "translateY(-30px)";
+  element.style.transform = "translateY(-10px)";
   element.classList.remove("shadow-sm");
-  element.classList.remove("mt-6");
+  element.classList.remove("mt-5");
   var user = element.querySelector(".company-info-top-left");
   user.style.transform = "scale(.8)";
   user.style.marginLeft = "-20px";
@@ -53,7 +53,9 @@ export const print = () => {
 
   element.querySelectorAll('.light-padding').forEach(elm => {
     elm.style.padding = "15px 0";
-  })
+  });
+
+  console.log(element);
 
   html2pdf().from(element).set(opt).save();
 };
