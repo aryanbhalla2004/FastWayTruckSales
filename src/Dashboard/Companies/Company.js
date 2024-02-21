@@ -30,7 +30,6 @@ export const Company = (props) => {
     setSearch(e.target.value);
   }
   
-  
 
   return (
     <div className='header-content-right-page'>

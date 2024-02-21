@@ -10,6 +10,21 @@ var opt = {
     useCORS: true,
     scrollY: 0
   },
+  
+  jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+};
+
+var report = {
+  margin: 0,
+  filename: "FastWayTruckSales.pdf",
+  html2canvas: { 
+    dpi: 192,
+    scale:4,
+    letterRendering: true,
+    useCORS: true,
+    scrollY: 0
+  },
+  pagebreak: { mode: 'avoid-all', before: '#page2el' },
   jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
 };
 
@@ -60,3 +75,15 @@ export const print = () => {
   html2pdf().from(element).set(opt).save();
 };
 
+export const printReport = () => {
+  var element = document.querySelector(".pdf-report-download").cloneNode(true);
+  element.style.transform = "translateY(-20px)";
+  element.style.padding = "0px";
+  element.style.margin = "0px";
+
+  var user = element.querySelectorAll(".font-size-small").forEach(elm => {
+    elm.style.transform = "scale(.8)";
+  });
+  //console.log(element);
+  html2pdf().from(element).set(report).save();
+}

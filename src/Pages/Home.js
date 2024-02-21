@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import truck from "../Util/Images/trucks.jpg";
 import row from "../Util/Images/whitetruck.jpg"
 import inline from "../Util/Images/inlinewhite.jpg";
+import "../Components/responsive.css";
+
 const Home = (props) => {
   useEffect(() => {
     props.setPage("home");
@@ -60,7 +62,7 @@ const Home = (props) => {
       </div>
       <div className="flex fl-center">
         <div className="content-widthfix about-wrapper flex fl-center fl-space-between">
-          <div className="images-selection">
+          <div className="images-selection about-image-content">
             <img className="floating-img-again" src="./images/location.jpeg" width="250"></img>
             <img className="about-images" src={inline} width="300"></img>
             <img className="floating-img" src='./images/lined-up.jpeg' width="300"></img>
@@ -102,7 +104,7 @@ const Home = (props) => {
             </ul>
             <Link to="/about" className="btn-general primary-btn"> Read More <i className="bi bi-arrow-right"></i></Link>
           </div>
-          <div className="images-selection">
+          <div className="images-selection image-smaller-maker">
             <img className="about-images-tone" src={truck} width="300"></img>
             <img className="floating-img-again-fix" src={row} width="320"></img>
           </div>

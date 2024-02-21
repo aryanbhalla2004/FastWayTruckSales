@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useOutletContext } from 'react-router-dom'
 import { firebase } from '../../Util/Firebase';
+import moment from "moment"
 export const Sales = (props) => {
   const [setDeleteBox, setDeleteId] = useOutletContext();
   const [sales, setSales] = useState([]);
@@ -71,6 +72,10 @@ export const Sales = (props) => {
     
   }
 
+  const renderFormattedDate = (date) => {
+    return moment(date).format('MM/DD/YYYY');
+  };
+
   return (
     <div className='header-content-right-page'>
       <div className='content-sizing-db wrapper-db-content'>
@@ -104,7 +109,7 @@ export const Sales = (props) => {
                     {item.status === "Done" && <div className='old-item'>Done</div>}
                     {item.status === "" && <div className='old-item'>N/A</div>}
                   </td>
-                  <td>{item.date}</td>
+                  <td>{renderFormattedDate(item.date)}</td>
                   <td><a href="#" className="btn-danger delete-button-table" onClick={() => {setDeleteBox(true); setDeleteId({...item, type: "Sales"})}}><i class="bi bi-trash3"></i> Delete</a><Link className=" edit-button" to={`/dashboard/sales/${item.id}`}><i class="bi bi-binoculars"></i> View</Link></td>
                 </tr>
               )))}

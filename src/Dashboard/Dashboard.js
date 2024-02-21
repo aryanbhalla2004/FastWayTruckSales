@@ -39,24 +39,25 @@ const Dashboard = (props) => {
             <div className='contain-col'>
               <span>Menu</span>
               <ul className='nav'>
-                <li onClick={() => history("/dashboard")}><i class="bi bi-grid-fill"></i> <Link to="/dashboard">Dashboard</Link></li>
-                <li onClick={() => history("/dashboard/trucks")}><i class="bi bi-truck"></i><Link to="/dashboard/trucks">Trucks</Link></li>
-                <li onClick={() => history("/dashboard/trailers")}><i class="bi bi-minecart-loaded"></i><Link to="/dashboard/trailers">Trailers</Link></li>
+                <li onClick={() => history("/dashboard")}><i className="bi bi-grid-fill"></i> <Link to="/dashboard">Dashboard</Link></li>
+                <li onClick={() => history("/dashboard/trucks")}><i className="bi bi-truck"></i><Link to="/dashboard/trucks">Trucks</Link></li>
+                <li onClick={() => history("/dashboard/trailers")}><i className="bi bi-minecart-loaded"></i><Link to="/dashboard/trailers">Trailers</Link></li>
               </ul>
             </div>
             <div className='contain-col'>
               <span>Inquires</span>
               <ul className='nav'>
-                <li onClick={() => history("/dashboard/product-inquire")}><i class="bi bi-bar-chart-line"></i><Link to="/dashboard/product-inquire">Product Inquires</Link></li>
-                <li onClick={() => history("/dashboard/new-listings")}><i class="bi bi-mailbox"></i><Link to="/dashboard/new-listings">New Listings</Link></li>
+                <li onClick={() => history("/dashboard/product-inquire")}><i className="bi bi-bar-chart-line"></i><Link to="/dashboard/product-inquire">Product Inquires</Link></li>
+                <li onClick={() => history("/dashboard/new-listings")}><i className="bi bi-mailbox"></i><Link to="/dashboard/new-listings">New Listings</Link></li>
               </ul>
             </div>
             <div className='contain-col'>
               <span>Sales</span>
               <ul className='nav'>
-                <li onClick={() => history("/dashboard/company")}><i class="bi bi-building"></i><Link to="/dashboard/sales">Companies</Link></li>
-                <li onClick={() => history("/dashboard/sales")}><i class="bi bi-cash"></i><Link to="/dashboard/sales">Bill of Sales</Link></li>
-                <li onClick={() => download("backup.json")}><i class="bi bi-layer-backward"></i><Link to="/dashboard/sales">Backup Sales</Link></li>
+                <li onClick={() => history("/dashboard/report")}><i className="bi bi-flag"></i><Link to="/dashboard/sales">Report</Link></li>
+                <li onClick={() => history("/dashboard/company")}><i className="bi bi-building"></i><Link to="/dashboard/sales">Companies</Link></li>
+                <li onClick={() => history("/dashboard/sales")}><i className="bi bi-cash"></i><Link to="/dashboard/sales">Bill of Sales</Link></li>
+                <li onClick={() => download("backup.json")}><i className="bi bi-layer-backward"></i><Link to="/dashboard/sales">Backup Sales</Link></li>
               </ul>
             </div>
           </div>

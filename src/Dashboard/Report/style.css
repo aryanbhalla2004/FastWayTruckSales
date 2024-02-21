@@ -1,0 +1,25 @@
+.report-table > tbody > tr, .report-table > thead{
+  grid-template-columns: 1.5fr 3.4fr 1.8fr 1.8fr 1.8fr;
+  line-height: 20px;
+}
+
+.generate-form {
+  display: flex;
+
+}
+
+.generate-form > div {
+  margin-top: 20px;
+}
+
+.divider {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  gap: 5px;
+}
+
+.divider > p {
+  font-weight: 300;
+  font-style: italic;
+}

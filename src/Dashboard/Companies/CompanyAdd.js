@@ -5,7 +5,7 @@ import Select from 'react-select';
 import options from "../../Util/options.js"
 import imageCompression from 'browser-image-compression';
 import Axios from "axios";
-
+import moment from 'moment';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const CompanyAdd = (props) => {
   const history = useNavigate();
@@ -18,7 +18,7 @@ const CompanyAdd = (props) => {
     country: "",
     email: "",
     iwe: "",
-    date: new Date().toLocaleDateString("en-US"),
+    date: moment().format("MM/DD/YYYY"),
     phone: "",
   });
 

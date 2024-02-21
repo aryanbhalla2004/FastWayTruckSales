@@ -4,7 +4,7 @@ import {firebase} from "../../Util/Firebase";
 import { renderToString } from "react-dom/server";
 import "./Sales.css";
 import logo from "../../Util/Images/billofsale.jpg";
-import { print } from '../../Util/htmlFile';
+import { print } from "../../Util/htmlFile";
 
 const SaleView = () => {
   const [listing, setListing] = useState();

@@ -7,6 +7,7 @@ import { Editor } from "react-draft-wysiwyg";
 import 'react-select-search/style.css'
 import SelectSearch from 'react-select-search';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import moment from "moment";
 
 const SalesAdd = (props) => {
   const ref = useRef(null);
@@ -22,7 +23,7 @@ const SalesAdd = (props) => {
     state:"",
     pCode:"",
     phone:"",
-    date: new Date().toLocaleDateString("en-US"),
+    date: moment().format("MM/DD/YYYY"),
     year:"",
     make:"",
     model:"",
@@ -42,6 +43,7 @@ const SalesAdd = (props) => {
     pst: false,
     status:"",
     re:"",
+    purchasePrice: 0,
     invoice:(parseInt(props.ExtraInfo.data.totalInvoice) + 1)
   });
 
@@ -141,7 +143,7 @@ const SalesAdd = (props) => {
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Date<span></span></label>
-              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="date" value={userInput.date} onChange={updateUserInput} />
+              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="date" value={userInput.date} onChange={updateUserInput}/>
             </div>
             <div className="col companie-selection-container-field" >
               <label className="form-label text-dark" htmlFor="c-name">I/We:<span>*</span></label>
@@ -256,6 +258,10 @@ const SalesAdd = (props) => {
             <h2 className="h4 mb-2 mt-4">Payment Information</h2>
           </div>
           <div className="row mt-3">
+            <div className="col">
+              <label className="form-label text-dark" htmlFor="c-name">Purchase Price<span>*</span></label>
+              <input className="form-control form-control-md form-control-dark" id="purchasePrice" name="purchasePrice" type="number" value={userInput.purchasePrice} onChange={updateUserInput} />
+            </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Vehicle Price<span>*</span></label>
               <input className="form-control form-control-md form-control-dark" id="amm" name="amm" type="number" value={userInput.amm} onChange={updateUserInput} />

@@ -41,6 +41,7 @@ import DashboardHome from './Dashboard/DashboardHome';
 import CompanyAdd from './Dashboard/Companies/CompanyAdd';
 import CompaniesView from './Dashboard/Companies/CompanyView';
 import CompanyEdit from './Dashboard/Companies/CompanyEdit';
+import ReportView from './Dashboard/Report/ReportView';
 const App = () => {
   const history = useNavigate();
   const [currentUser, setCurrentUser] = useState();
@@ -226,6 +227,8 @@ const App = () => {
           <Route path="company/:id" element={<CompaniesView getData={getData} del={del} CompaniesList={CompaniesList}/>}/>
           <Route path="company/add"  element={<CompanyAdd ExtraInfo={ExtraInfo} SalesPost={SalesPost} edit={edit} add={add} CompaniesList={CompaniesList}/>}/>
           <Route path="company/edit/:id"  element={<CompanyEdit  CompaniesList={CompaniesList} getData={getData} edit={edit}/>}/>
+
+          <Route path="report" element={<ReportView SalesPost={SalesPost}/>}/>
         </Route>
 
         <Route path="/" element={<LandingPage setPage={setPage} setLoading={setLoading} page={page}/>}>

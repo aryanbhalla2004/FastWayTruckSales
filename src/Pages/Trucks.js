@@ -109,7 +109,7 @@ const Trucks = () => {
       </Helmet>
       <PageTitle name="Trucks"/>
       <div className=" trucks-container flex fl-center services-container">
-        <div className="content-widthfix flex">
+        <div className="content-widthfix filter-truck flex">
         <div className='filter-left flex'>
             <input className="form-control filter-inputs-fields form-control-md form-control-dark" id="text" name="text" onChange={changeFilter} type="text" placeholder="What are you looking for?" required=""/>
             <select className="form-control filter-inputs-fields form-control-md form-control-dark" id="type" name="type" onChange={changeFilter} required="" >

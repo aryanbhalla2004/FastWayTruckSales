@@ -56,7 +56,7 @@ const CompanyEdit = (props) => {
           <div className="row mt-3">
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Date<span></span></label>
-              <input className="form-control form-control-md form-control-dark" id="fName" name="date" disabled type="text" value={userInput.date} onChange={updateUserInput} />
+              <input className="form-control form-control-md form-control-dark" id="fName" name="date" type="text" value={userInput.date} onChange={updateUserInput} />
             </div>
             <div className="col">
               <label className="form-label text-dark" htmlFor="c-name">Company Name:<span>*</span></label>
