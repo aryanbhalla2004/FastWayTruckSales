@@ -190,60 +190,7 @@ const TrailerDetail = (props) => {
     </motion.div>}
 
 
-    <div className="logo-companies recommened-items-single-details flex fl-center">
-        <div className="content-widthfix logos-home-wrapper flex fl-center fl-col">
-          <h2>Recommended Products</h2>
-          <h1>Items you might like</h1>
-          <ul className='listing-of-items recommened-pro flex fl-center fl-space-between'>
-            <li className='single-item flex fl-col'>
-              <div className="item-image" style={{backgroundImage: `url("https://hpmis.com/backend/uploads/9487a23de53d35604b84bf4b9a24ae74k.jpeg")`}}>
-                <span className='new-item'>New</span>
-              </div>
-              <div className='single-item-info flex fl-col'>
-                <span className='stock-num'>Stock #517 | <b>Year: 2022</b></span>
-                <h2>KENWORTH - T800 - DUMP TRUCK</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit officia nobis, labore quo minus iusto nostrum voluptates delectus.</p>
-                <ul className='flex'>
-                  <li><i className="bi bi-speedometer"></i> 568158 KMs</li>
-                  <li><i className="bi bi-gear-wide"></i> 18 Speed</li>
-                </ul>
-              </div>
-              <Link to={`/truck-detail/2323`} className='view-truck-button flex fl-space-between'>View Details <i className="bi bi-arrow-right"></i></Link>
-            </li>
-            <li className='single-item flex fl-col'>
-              <div className="item-image" style={{backgroundImage: `url("https://hpmis.com/backend/uploads/9487a23de53d35604b84bf4b9a24ae74k.jpeg")`}}>
-                <span className='new-item'>New</span>
-              </div>
-              <div className='single-item-info flex fl-col'>
-                <span className='stock-num'>Stock #517 | <b>Year: 2022</b></span>
-                <h2>KENWORTH - T800 - DUMP TRUCK</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit officia nobis, labore quo minus iusto nostrum voluptates delectus.</p>
-                <ul className='flex'>
-                  <li><i className="bi bi-speedometer"></i> 568158 KMs</li>
-                  <li><i className="bi bi-gear-wide"></i> 18 Speed</li>
-                </ul>
-              </div>
-              <Link to={`/truck-detail/2323`} className='view-truck-button flex fl-space-between'>View Details <i className="bi bi-arrow-right"></i></Link>
-            </li>
-            
-            <li className='single-item flex fl-col'>
-              <div className="item-image" style={{backgroundImage: `url("https://hpmis.com/backend/uploads/9487a23de53d35604b84bf4b9a24ae74k.jpeg")`}}>
-                <span className='new-item'>New</span>
-              </div>
-              <div className='single-item-info flex fl-col'>
-                <span className='stock-num'>Stock #517 | <b>Year: 2022</b></span>
-                <h2>KENWORTH - T800 - DUMP TRUCK</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit officia nobis, labore quo minus iusto nostrum voluptates delectus.</p>
-                <ul className='flex'>
-                  <li><i className="bi bi-speedometer"></i> 568158 KMs</li>
-                  <li><i className="bi bi-gear-wide"></i> 18 Speed</li>
-                </ul>
-              </div>
-              <Link to={`/truck-detail/2323`} className='view-truck-button flex fl-space-between'>View Details <i className="bi bi-arrow-right"></i></Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+    
     </motion.div>
   )
 }

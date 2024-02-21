@@ -215,7 +215,7 @@ const TruckDetail = (props) => {
     </motion.div>}
 
 
-    <div className="logo-companies recommened-items-single-details flex fl-center">
+    {/* <div className="logo-companies recommened-items-single-details flex fl-center">
         <div className="content-widthfix logos-home-wrapper flex fl-center fl-col">
           <h2>Recommended Products</h2>
           <h1>Items you might like</h1>
@@ -268,7 +268,7 @@ const TruckDetail = (props) => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </motion.div>
   )
 }
