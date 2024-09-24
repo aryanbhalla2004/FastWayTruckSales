@@ -87,3 +87,21 @@ export const printReport = () => {
   //console.log(element);
   html2pdf().from(element).set(report).save();
 }
+
+export const printCheque = (chequeName) => {
+  var element = document.querySelector(".pdf-cheque-download").cloneNode(true);
+
+  html2pdf().from(element).set({
+    margin: 0,
+    filename: chequeName,
+    html2canvas: { 
+      dpi: 192,
+      scale:4,
+      letterRendering: true,
+      useCORS: true,
+      scrollY: 0
+    },
+    
+    jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+  }).save();
+}

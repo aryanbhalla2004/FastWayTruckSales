@@ -54,6 +54,7 @@ const Dashboard = (props) => {
             <div className='contain-col'>
               <span>Sales</span>
               <ul className='nav'>
+                <li onClick={() => history("/dashboard/cheque")}><i className="bi bi-bank"></i><Link to="/dashboard/sales">Cheque</Link></li>
                 <li onClick={() => history("/dashboard/report")}><i className="bi bi-flag"></i><Link to="/dashboard/sales">Report</Link></li>
                 <li onClick={() => history("/dashboard/company")}><i className="bi bi-building"></i><Link to="/dashboard/sales">Companies</Link></li>
                 <li onClick={() => history("/dashboard/sales")}><i className="bi bi-cash"></i><Link to="/dashboard/sales">Bill of Sales</Link></li>

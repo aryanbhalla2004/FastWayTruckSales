@@ -1,0 +1,25 @@
+.cheque-box {
+  border: 1px solid red;
+  display: flex;
+  gap: 30px;  
+  height: 350px;
+}
+
+.date-box-c {
+  text-align: right;
+  margin-top: 40px;
+  padding: 0 50px;
+  letter-spacing: 1px;
+}
+
+.amount-cost-c {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 0 50px;
+}
+
+.memo-for-c {
+  margin-top: 50px;
+  padding: 0 50px;
+}

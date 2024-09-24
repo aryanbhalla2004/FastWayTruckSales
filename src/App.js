@@ -42,6 +42,9 @@ import CompanyAdd from './Dashboard/Companies/CompanyAdd';
 import CompaniesView from './Dashboard/Companies/CompanyView';
 import CompanyEdit from './Dashboard/Companies/CompanyEdit';
 import ReportView from './Dashboard/Report/ReportView';
+import { Cheque } from './Dashboard/Cheque/Cheque';
+import { ChequeAdd } from './Dashboard/Cheque/ChequeAdd';
+import { ChequeView } from './Dashboard/Cheque/ChequeView';
 const App = () => {
   const history = useNavigate();
   const [currentUser, setCurrentUser] = useState();
@@ -53,7 +56,9 @@ const App = () => {
   const [TruckPost, setTruckPost] = useState();
   const [SalesPost, setSalesPost] = useState();
   const [ExtraInfo, setExtraInfo] = useState();
+  const [ChequeInfo, setChequeInfo] = useState();
   const [CompaniesList, setCompaniesList] = useState();
+
   useEffect(() => {
     db.collection("TruckPost").onSnapshot((querySnapshot) => {
       let tempList = [];
@@ -61,6 +66,16 @@ const App = () => {
         tempList.push({data: doc.data(),id : doc.id});
       });
       setTruckPost(tempList);
+    });
+  }, []);
+
+  useEffect(() => {
+    db.collection("cheque").onSnapshot((querySnapshot) => {
+      let tempList = [];
+      querySnapshot.forEach((doc) => {
+        tempList.push({data: doc.data(),id : doc.id});
+      });
+      setChequeInfo(tempList);
     });
   }, [])
 
@@ -142,7 +157,7 @@ const App = () => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
-  const add = async (type,obj) => {
+  const add = async (type, obj) => {
     try{
       await firebase.firestore().collection(type).doc().set(obj);
     }
@@ -229,6 +244,10 @@ const App = () => {
           <Route path="company/edit/:id"  element={<CompanyEdit  CompaniesList={CompaniesList} getData={getData} edit={edit}/>}/>
 
           <Route path="report" element={<ReportView SalesPost={SalesPost}/>}/>
+
+          <Route path="cheque" element={<Cheque />} />
+          <Route path="cheque/add" element={<ChequeAdd add={add}/>} />
+          <Route path="cheque/:id" element={<ChequeView ChequeInfo={ChequeInfo}/>}/>
         </Route>
 
         <Route path="/" element={<LandingPage setPage={setPage} setLoading={setLoading} page={page}/>}>
