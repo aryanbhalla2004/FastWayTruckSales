@@ -93,7 +93,7 @@ export const printCheque = (chequeName) => {
 
   html2pdf().from(element).set({
     margin: 0,
-    filename: chequeName,
+    filename: `${chequeName}.pdf`,
     html2canvas: { 
       dpi: 192,
       scale:4,
