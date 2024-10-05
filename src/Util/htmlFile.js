@@ -90,6 +90,7 @@ export const printReport = () => {
 
 export const printCheque = (chequeName) => {
   var element = document.querySelector(".pdf-cheque-download").cloneNode(true);
+  element.style.transform = "translateY(-30px)";
 
   html2pdf().from(element).set({
     margin: 0,

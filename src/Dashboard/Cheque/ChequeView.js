@@ -55,13 +55,13 @@ export const ChequeView = (props) => {
           </ul>
           <ul className='amount-cost-c'>
             <li>
-              <p>{ listing != undefined && listing.memo}</p>
+              <p>{ listing != undefined && listing.for}</p>
               <p>{ listing != undefined && listing.amountWord}</p>
             </li>
             <li>{ listing != undefined && parseFloat(listing.amount).toFixed(2)}</li>
           </ul>
           <ul className='memo-for-c'>
-            <li>{ listing != undefined && listing.for}</li>
+            <li>{ listing != undefined && listing.memo}</li>
           </ul>
         </section>
       </div>
