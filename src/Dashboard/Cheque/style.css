@@ -19,6 +19,12 @@
   padding: 0 50px;
 }
 
+.amount-cost-c > li {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 .memo-for-c {
   margin-top: 50px;
   padding: 0 50px;

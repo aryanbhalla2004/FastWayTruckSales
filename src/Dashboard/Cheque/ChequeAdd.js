@@ -16,7 +16,8 @@ export const ChequeAdd = (props) => {
     amount: "",
     date: "",
     amountWord: "",
-    for: ""
+    for: "",
+    memo: ""
   });
 
 
