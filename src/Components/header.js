@@ -18,7 +18,7 @@ const Header = (props) => {
           </div>
           <div className="single-info-title flex">
             <i className="bi bi-geo-alt"></i>
-            <h4>2095 Logan Ave, Winnipeg MB, Canada</h4>
+            <h4>195 Oak Point Hwy, Winnipeg MB, Canada</h4>
           </div>
           <div className="single-info-title flex white-bg">
             <i className="bi bi-telephone"></i>

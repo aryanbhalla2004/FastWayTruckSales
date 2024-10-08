@@ -59,7 +59,7 @@ export const Contact = () => {
               </div>
               <div>
                 <h3>Address:</h3>
-                <p>2095 Logan Ave, Winnipeg MB, Canada</p>
+                <p> 195 Oak Point Hwy, Winnipeg MB, Canada</p>
               </div>
             </div>
             <div className="contact-info-form-col">
@@ -88,7 +88,7 @@ export const Contact = () => {
           </form>
         </div>
       </div>
-      <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=2095%20Logan%20Ave,%20Winnipeg%20MB,%20Canada+(Fastway%20Trucking)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/farm-gps/">GPS Navigation</a></iframe>
+      <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=600&amp;hl=en&amp;q=195 Oak Point Hwy, Winnipeg MB, Canada&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
     </motion.div>
   )
 }

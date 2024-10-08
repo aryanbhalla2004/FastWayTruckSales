@@ -24,7 +24,7 @@ const Footer = () => {
             <ul className="services-list-footer contact-fix">
               <li><i className="bi bi-envelope-fill"></i> mb@fastwaytrucks.com</li>
               <li><i className="bi bi-telephone-fill"></i> +1 (204)-615-1000</li>
-              <li><i className="bi bi-geo-alt-fill"></i> 2095 Logan Ave, Winnipeg MB, Canada</li>
+              <li><i className="bi bi-geo-alt-fill"></i> 195 Oak Point Hwy, Winnipeg MB, Canada</li>
             </ul>
           </div>
         </div>
