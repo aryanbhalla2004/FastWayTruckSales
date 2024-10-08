@@ -15,7 +15,7 @@ const Home = (props) => {
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Helmet>
-        <title>Welcome to Fastway Trucking | Home</title>
+        <title>Welcome to Fastway Truck Sales | Home</title>
       </Helmet>
       <section className="slider-information flex fl-center">
         <div className="slider-information-wrapper flex fl-center">
