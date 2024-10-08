@@ -141,7 +141,7 @@ const SellTruck = (props) => {
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Helmet>
-        <title>Sell Your Truck | Leo Transport</title>
+        <title>Sell Your Truck | Fastway Truck Sales</title>
       </Helmet>
       <PageTitle name="Sell Your Truck"/>
       {!message && !error ?

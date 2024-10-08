@@ -10,7 +10,7 @@ export const About = () => {
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Helmet>
-        <title>About Us | Leo Transport</title>
+        <title>About Us | Fastway Truck Sales</title>
       </Helmet>
       <PageTitle name="About us"/>
       <div className="flex fl-center top-about-box">

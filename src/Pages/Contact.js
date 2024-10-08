@@ -36,7 +36,7 @@ export const Contact = () => {
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Helmet>
-        <title>Contact Us | Leo Transport</title>
+        <title>Contact Us | Fastway Truck Sales</title>
       </Helmet>
       <PageTitle name="Contact us"/>
       <div className="contact-col">

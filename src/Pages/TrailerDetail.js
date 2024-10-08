@@ -102,7 +102,7 @@ const TrailerDetail = (props) => {
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Helmet>
-        <title>Trailers | Fastway Trucking</title>
+        <title>Trailers | Fastway Truck Sales</title>
       </Helmet>
     <PageTitle name={product && product.Title}/>
     <div className="flex fl-center detail-page-header">  

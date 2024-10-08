@@ -36,7 +36,7 @@ export const Trailers = () => {
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Helmet>
-        <title>Trailers | Fastway Trucking</title>
+        <title>Trailers | Fastway Truck Sales</title>
       </Helmet>
       <PageTitle name="Trailers"/>
       <div className=" trucks-container flex fl-center services-container">
